@@ -21,36 +21,49 @@ import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
+import com.qaprosoft.carina.demo.gui.components.enums.HeaderMenuButtons;
 import com.qaprosoft.carina.demo.gui.pages.CompareModelsPage;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import com.qaprosoft.carina.demo.gui.pages.NewsPage;
 
 public class FooterMenu extends AbstractUIObject {
-    @FindBy(linkText = "Home")
-    private ExtendedWebElement homeLink;
+	@FindBy(linkText = "Home")
+	private ExtendedWebElement homeLink;
 
-    @FindBy(xpath = "//div[@class='footer-inner']//a[contains(text(),'Compare')]")
-    private ExtendedWebElement compareLink;
-    
-    @FindBy(linkText = "News")
-    private ExtendedWebElement newsLink;
+	@FindBy(xpath = "//div[@class='footer-inner']//a[contains(text(),'Compare')]")
+	private ExtendedWebElement compareLink;
 
-    public FooterMenu(WebDriver driver, SearchContext searchContext) {
-        super(driver, searchContext);
-    }
+	@FindBy(linkText = "News")
+	private ExtendedWebElement newsLink;
 
-    public HomePage openHomePage() {
-        homeLink.click();
-        return new HomePage(driver);
-    }
+	@FindBy(xpath = "//div[@class='footer-inner']/div[@id='footmenu']/p/a[contains(text(), '%s')]")
+	private ExtendedWebElement footerMenuButton;
 
-    public CompareModelsPage openComparePage() {
-        compareLink.click();
-        return new CompareModelsPage(driver);
-    }
-    
-    public NewsPage openNewsPage() {
-        newsLink.click();
-        return new NewsPage(driver);
-    }
+	public FooterMenu(WebDriver driver, SearchContext searchContext) {
+		super(driver, searchContext);
+	}
+//чи потрібно повертати homePage object
+	public HomePage openHomePage() {
+		homeLink.click();
+		return new HomePage(driver);
+	}
+
+	public CompareModelsPage openComparePage() {
+		compareLink.click();
+		return new CompareModelsPage(driver);
+	}
+
+	public NewsPage openNewsPage() {
+		newsLink.click();
+		return new NewsPage(driver);
+	}
+
+	public void clickFooterMenuButton(HeaderMenuButtons menuButtons) {
+		if (menuButtons == HeaderMenuButtons.HOME) {
+			homeLink.click();
+
+		} else {
+			footerMenuButton.format(menuButtons.getValue()).click();
+		}
+	}
 }

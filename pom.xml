@@ -17,6 +17,7 @@
 		<java.version>11</java.version>
 		<zebrunner-agent.version>1.8.0</zebrunner-agent.version>
 		<suite>helloWorld</suite>
+		<testng.version>7.6.1</testng.version>
 	</properties>
 
 	<repositories>
@@ -34,6 +35,11 @@
 	</repositories>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>4.4.0</version>
+		</dependency>
 		<dependency>
 			<groupId>com.qaprosoft</groupId>
 			<artifactId>carina-core</artifactId>
@@ -58,7 +64,7 @@
 		</dependency>
 
 		<dependency>
-			<!--we need it to reuse benefits of zebrunner testng agent for webdriver
+			<!--we need it to reuse benefits of zebrunner testng agent for webdriver 
 				sesssion(s) declaration -->
 			<groupId>net.bytebuddy</groupId>
 			<artifactId>byte-buddy</artifactId>

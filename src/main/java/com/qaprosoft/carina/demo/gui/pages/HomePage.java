@@ -28,12 +28,16 @@ import org.slf4j.LoggerFactory;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.qaprosoft.carina.demo.gui.components.FooterMenu;
+import com.qaprosoft.carina.demo.gui.components.HeaderMenu;
 import com.qaprosoft.carina.demo.gui.components.WeValuePrivacyAd;
 
 
 public class HomePage extends AbstractPage {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
+    @FindBy(id = "header")
+    private HeaderMenu headerMenu;
+    
     @FindBy(id = "footmenu")
     private FooterMenu footerMenu;
 
@@ -53,7 +57,11 @@ public class HomePage extends AbstractPage {
         return footerMenu;
     }
 
-    public BrandModelsPage selectBrand(String brand) {
+    public HeaderMenu getHeaderMenu() {
+		return headerMenu;
+	}
+
+	public BrandModelsPage selectBrand(String brand) {
         LOGGER.info("selecting '" + brand + "' brand...");
         for (ExtendedWebElement brandLink : brandLinks) {
             String currentBrand = brandLink.getText();
@@ -68,5 +76,8 @@ public class HomePage extends AbstractPage {
     
     public WeValuePrivacyAd getWeValuePrivacyAd() {
     	return new WeValuePrivacyAd(driver);
+    }
+    public boolean isFooterMenuPresent() {
+    	return footerMenu.isAnyElementPresent();
     }
 }

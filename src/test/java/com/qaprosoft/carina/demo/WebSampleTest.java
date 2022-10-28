@@ -68,6 +68,9 @@ public class WebSampleTest implements IAbstractTest {
         softAssert.assertEquals(productInfoPage.readCamera(), "64MP", "Invalid camera info!");
         softAssert.assertEquals(productInfoPage.readRam(), "6/8GB RAM", "Invalid ram info!");
         softAssert.assertEquals(productInfoPage.readBattery(), "4500mAh", "Invalid battery info!");
+        
+        FooterMenu footerMenu = homePage.getFooterMenu();
+        footerMenu.refresh();
         softAssert.assertAll();
     }
 
@@ -117,5 +120,4 @@ public class WebSampleTest implements IAbstractTest {
         }
         softAssert.assertAll();
     }
-
 }
