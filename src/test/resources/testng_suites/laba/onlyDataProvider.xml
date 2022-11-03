@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="test with dataprovider" verbose="1">
+	<test name="Providen data login test">
+		<classes>
+			<class name="com.qaprosoft.carina.demo.laba.LoginTest">
+				<methods>
+					<include name="loginTest"/>
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>

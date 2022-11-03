@@ -20,50 +20,36 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.qaprosoft.carina.demo.gui.components.enums.HeaderMenuButtons;
-import com.qaprosoft.carina.demo.gui.pages.CompareModelsPage;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
-import com.qaprosoft.carina.demo.gui.pages.NewsPage;
+import com.qaprosoft.carina.demo.utils.HeaderElementFactory;
 
 public class FooterMenu extends AbstractUIObject {
-	@FindBy(linkText = "Home")
+	@FindBy(xpath = "//a[@class='gsma-logo']")
 	private ExtendedWebElement homeLink;
 
-	@FindBy(xpath = "//div[@class='footer-inner']//a[contains(text(),'Compare')]")
-	private ExtendedWebElement compareLink;
-
-	@FindBy(linkText = "News")
-	private ExtendedWebElement newsLink;
-
-	@FindBy(xpath = "//div[@class='footer-inner']/div[@id='footmenu']/p/a[contains(text(), '%s')]")
+	@FindBy(xpath = "//div[@class='footer-inner']//a[contains(text(), '%s')]")
 	private ExtendedWebElement footerMenuButton;
 
 	public FooterMenu(WebDriver driver, SearchContext searchContext) {
 		super(driver, searchContext);
 	}
-//чи потрібно повертати homePage object
+	
 	public HomePage openHomePage() {
 		homeLink.click();
 		return new HomePage(driver);
 	}
-
-	public CompareModelsPage openComparePage() {
-		compareLink.click();
-		return new CompareModelsPage(driver);
-	}
-
-	public NewsPage openNewsPage() {
-		newsLink.click();
-		return new NewsPage(driver);
-	}
-
-	public void clickFooterMenuButton(HeaderMenuButtons menuButtons) {
+	
+	public AbstractPage clickFooterMenuButton(HeaderMenuButtons menuButtons) {
 		if (menuButtons == HeaderMenuButtons.HOME) {
 			homeLink.click();
+			return HeaderElementFactory.getPage(driver, menuButtons);
 
 		} else {
 			footerMenuButton.format(menuButtons.getValue()).click();
+			return HeaderElementFactory.getPage(driver, menuButtons);
 		}
 	}
 }

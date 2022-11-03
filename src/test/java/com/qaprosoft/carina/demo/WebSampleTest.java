@@ -32,6 +32,7 @@ import com.qaprosoft.carina.demo.gui.components.FooterMenu;
 import com.qaprosoft.carina.demo.gui.components.NewsItem;
 import com.qaprosoft.carina.demo.gui.components.compare.ModelSpecs;
 import com.qaprosoft.carina.demo.gui.components.compare.ModelSpecs.SpecType;
+import com.qaprosoft.carina.demo.gui.components.enums.HeaderMenuButtons;
 import com.qaprosoft.carina.demo.gui.pages.BrandModelsPage;
 import com.qaprosoft.carina.demo.gui.pages.CompareModelsPage;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
@@ -87,7 +88,7 @@ public class WebSampleTest implements IAbstractTest {
         // Open model compare page
         FooterMenu footerMenu = homePage.getFooterMenu();
         Assert.assertTrue(footerMenu.isUIObjectPresent(2), "Footer menu wasn't found!");
-        CompareModelsPage comparePage = footerMenu.openComparePage();
+        CompareModelsPage comparePage = new CompareModelsPage(getDriver());
         // Compare 3 models
         List<ModelSpecs> specs = comparePage.compareModels("Samsung Galaxy J3", "Samsung Galaxy J5", "Samsung Galaxy J7 Pro");
         // Verify model announced dates
@@ -106,7 +107,7 @@ public class WebSampleTest implements IAbstractTest {
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
         
-        NewsPage newsPage = homePage.getFooterMenu().openNewsPage();
+        NewsPage newsPage = (NewsPage) homePage.getFooterMenu().clickFooterMenuButton(HeaderMenuButtons.NEWS);
         Assert.assertTrue(newsPage.isPageOpened(), "News page is not opened!");
         
         final String searchQ = "iphone";

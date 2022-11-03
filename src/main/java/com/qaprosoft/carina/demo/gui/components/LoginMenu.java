@@ -29,29 +29,33 @@ public class LoginMenu extends AbstractUIObject{
 	@FindBy(id = "upass")
 	private ExtendedWebElement passwordInput;
 	
-	@FindBy(xpath = "//*[@value='Log in']")
+	@FindBy(xpath = "//input[@value='Log in']")
 	private ExtendedWebElement loginButton;
 	
-	@FindBy(xpath = "//*[@class='forgot']")
+	@FindBy(xpath = "//a[@class='forgot']")
 	private ExtendedWebElement forgotPassword;
 	
 	@FindBy(xpath = "//p[contains(text(), 'Login')]")
 	private ExtendedWebElement loginTitle;
 	
+	public void inputRegistrationDataWithClick(String email, String password) {
+		emailInput(email);
+		passwordInput(password);
+		loginClick();
+	}
+	
 	public void inputRegistrationData(String email, String password) {
 		emailInput(email);
 		passwordInput(password);
 	}
-
+	
 	public void passwordInput(String password) {
 		LOGGER.info("Enter to email input method");
-		passwordInput.click();
 		passwordInput.type(password);
 	}
 
 	public void emailInput(String email) {
 		LOGGER.info("Enter to email input method");
-		emailInput.click();
 		emailInput.type(email);
 	}
 	
@@ -83,8 +87,20 @@ public class LoginMenu extends AbstractUIObject{
 	public ExtendedWebElement getForgotPassword() {
 		return forgotPassword;
 	}
-	public String getColorLoginButton() {
+	public void hoverLoginButton() {
 		loginButton.hover();
+	}
+	public String getColorLoginButton() {
+		hoverLoginButton();
 		return loginButton.getElement().getCssValue("background-color");
+	}
+	
+	public String getValidationMessage() {
+		String emailMessage = emailInput.getAttribute("validationMessage");
+		String passwordMessage = passwordInput.getAttribute("validationMessage");
+		if (emailMessage.isEmpty()) {
+			return passwordMessage;
+		}
+		return emailMessage;
 	}
 }

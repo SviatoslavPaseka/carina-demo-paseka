@@ -17,6 +17,7 @@
 		<java.version>11</java.version>
 		<zebrunner-agent.version>1.8.0</zebrunner-agent.version>
 		<suite>helloWorld</suite>
+		<mySuite>guiComponents</mySuite>
 		<testng.version>7.6.1</testng.version>
 	</properties>
 

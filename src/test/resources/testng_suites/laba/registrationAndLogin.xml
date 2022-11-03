@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="gsmarena registration and login test" verbose="1">
+
+	<test name="Registration test">
+		<classes>
+			<class name="com.qaprosoft.carina.demo.laba.RegistrationTest"></class>
+		</classes>
+	</test>
+	
+	<test name="Succesful login test">
+		<classes>
+			<class name="com.qaprosoft.carina.demo.laba.LoginTest">
+				<methods>
+					<include name="succesfullLoginTest"/>
+				</methods>	
+			</class>
+		</classes>
+	</test>
+</suite>

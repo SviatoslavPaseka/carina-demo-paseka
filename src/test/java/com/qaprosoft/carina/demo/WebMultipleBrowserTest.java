@@ -21,6 +21,7 @@ import com.qaprosoft.carina.core.foundation.webdriver.Screenshot;
 import com.qaprosoft.carina.core.foundation.webdriver.core.capability.impl.desktop.ChromeCapabilities;
 import com.qaprosoft.carina.core.foundation.webdriver.core.capability.impl.desktop.FirefoxCapabilities;
 import com.qaprosoft.carina.demo.gui.components.NewsItem;
+import com.qaprosoft.carina.demo.gui.components.enums.HeaderMenuButtons;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import com.qaprosoft.carina.demo.gui.pages.NewsPage;
 import org.apache.commons.collections.CollectionUtils;
@@ -50,7 +51,7 @@ public class WebMultipleBrowserTest implements IAbstractTest {
         Assert.assertEquals(firefoxHomePage.getDriver().getTitle(), "GSMArena.com - mobile phone reviews, news, specifications and more...");
         Screenshot.capture(firefoxHomePage.getDriver(), "Firefox capture!");
 
-        NewsPage newsPage = chromeHomePage.getFooterMenu().openNewsPage();
+        NewsPage newsPage = (NewsPage) chromeHomePage.getFooterMenu().clickFooterMenuButton(HeaderMenuButtons.NEWS);
         final String searchQ = "iphone";
         List<NewsItem> news = newsPage.searchNews(searchQ);
         Screenshot.capture(chromeHomePage.getDriver(), "Chrome capture!");

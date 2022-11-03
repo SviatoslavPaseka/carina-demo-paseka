@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="gsmarena GUI components test" verbose="1">
+
+	<test name="Header test">
+		<classes>
+			<class name="com.qaprosoft.carina.demo.laba.HeaderTest"></class>
+		</classes>
+	</test>
+	
+	<test name="Footer test">
+		<classes>
+			<class name="com.qaprosoft.carina.demo.laba.FooterTest"></class>
+		</classes>
+	</test>
+
+	<test name="Login form test">
+		<classes>
+			<class name="com.qaprosoft.carina.demo.laba.LoginTest">
+				<methods>
+					<include name="loginModalFormTest"/>
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>

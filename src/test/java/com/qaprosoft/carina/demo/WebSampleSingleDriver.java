@@ -63,7 +63,7 @@ public class WebSampleSingleDriver implements IAbstractTest {
         // Open model compare page
         FooterMenu footerMenu = homePage.getFooterMenu();
         Assert.assertTrue(footerMenu.isUIObjectPresent(2), "Footer menu wasn't found!");
-        comparePage = footerMenu.openComparePage();
+        comparePage = (CompareModelsPage) footerMenu.clickFooterMenuButton(null);
 
     }
     

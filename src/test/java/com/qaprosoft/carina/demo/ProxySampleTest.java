@@ -29,6 +29,7 @@ import com.qaprosoft.carina.browserupproxy.ProxyPool;
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
+import com.qaprosoft.carina.demo.gui.components.enums.HeaderMenuButtons;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import com.qaprosoft.carina.demo.gui.pages.NewsPage;
 import com.zebrunner.agent.core.registrar.Artifact;
@@ -63,7 +64,7 @@ public class ProxySampleTest implements IAbstractTest {
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
 
-        NewsPage newsPage = homePage.getFooterMenu().openNewsPage();
+        NewsPage newsPage = (NewsPage) homePage.getFooterMenu().clickFooterMenuButton(HeaderMenuButtons.NEWS);
         Assert.assertTrue(newsPage.isPageOpened(), "News page is not opened!");
 
         // Saving har to a file...

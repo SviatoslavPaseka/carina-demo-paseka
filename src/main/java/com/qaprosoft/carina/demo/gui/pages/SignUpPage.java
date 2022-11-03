@@ -24,19 +24,19 @@ public class SignUpPage extends AbstractPage {
 	@FindBy(id = "uname")
 	private ExtendedWebElement nicknameInput;
 	// change * to tag
-	@FindBy(xpath = "//*[@id='udata-f']/input[@id='email']")
+	@FindBy(xpath = "//fieldset[@id='udata-f']/input[@id='email']")
 	private ExtendedWebElement emailInput;
 
-	@FindBy(xpath = "//*[@id='frmOpin']/input[@id='upass']")
+	@FindBy(xpath = "//form[@id='frmOpin']/input[@id='upass']")
 	private ExtendedWebElement passwordTextField;
 
-	@FindBy(xpath = "//*[@for='iagree1']")
+	@FindBy(xpath = "//label[@for='iagree1']")
 	private ExtendedWebElement storeDataAgreement;
 
-	@FindBy(xpath = "//*[@for='iagree2']")
+	@FindBy(xpath = "//label[@for='iagree2']")
 	private ExtendedWebElement ageAgreement;
 
-	@FindBy(xpath = "//*[@id='ucsubmit-f']/*[@id='nick-submit']")
+	@FindBy(xpath = "//div[@id='ucsubmit-f']/input[@id='nick-submit']")
 	private ExtendedWebElement submit;
 
 	@FindBy(xpath = "//div[@class='normal-text res-success']")
@@ -46,18 +46,19 @@ public class SignUpPage extends AbstractPage {
 		super(driver);
 	}
 
-	public void inputRegistrationData(String nickname, String email, String password) {// registerNewAcc
+	public void registerNewAccount(String nickname, String email, String password) {// registerNewAcc
 		nicknameInput(nickname);
 
 		emailInput(email);
 
-		passwordInput(password);
+		passwordInput(password); 
 
 		LOGGER.info("Trying to check 1-st checkbox");
 		storeDataAgreement.check();
 		LOGGER.info("Trying to check 2-nd checkbox");
 		ageAgreement.check();
-		// add submit click
+		
+		clickSubmit();
 	}
 
 	public void passwordInput(String password) {// change input to type
