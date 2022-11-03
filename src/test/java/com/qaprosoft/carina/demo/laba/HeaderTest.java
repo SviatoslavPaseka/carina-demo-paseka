@@ -20,7 +20,7 @@ import com.qaprosoft.carina.demo.gui.pages.Phone_FinderPage;
 import com.qaprosoft.carina.demo.gui.pages.ReviewsPage;
 import com.qaprosoft.carina.demo.gui.pages.VideosPage;
 import com.zebrunner.agent.core.annotation.TestLabel;
-
+	
 public class HeaderTest implements IAbstractTest{
 	@Test()
 	@MethodOwner(owner = "qpsdemo")
@@ -38,7 +38,6 @@ public class HeaderTest implements IAbstractTest{
         
         for (HeaderMenuButtons button: HeaderMenuButtons.values()) {
         	AbstractPage page = headerMenu.clickHeaderMenuButton(button);
-			//add assert
         	
 			page.open();
 			switch (button) { 
@@ -73,7 +72,7 @@ public class HeaderTest implements IAbstractTest{
 					softAssert.assertTrue(page.isPageOpened
 							(new MerchPage(getDriver())), "Page: " + button.getValue() + " is not opened!");
 					break;
-				case COVARAGE:
+				case COVERAGE:
 					softAssert.assertTrue(page.isPageOpened
 							(new CoveragePage(getDriver())), "Page: " + button.getValue() + " is not opened!");
 					break;

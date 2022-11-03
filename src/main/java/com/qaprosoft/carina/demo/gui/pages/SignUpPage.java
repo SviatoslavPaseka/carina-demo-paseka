@@ -23,7 +23,7 @@ public class SignUpPage extends AbstractPage {
 
 	@FindBy(id = "uname")
 	private ExtendedWebElement nicknameInput;
-	// change * to tag
+	
 	@FindBy(xpath = "//fieldset[@id='udata-f']/input[@id='email']")
 	private ExtendedWebElement emailInput;
 
@@ -46,12 +46,12 @@ public class SignUpPage extends AbstractPage {
 		super(driver);
 	}
 
-	public void registerNewAccount(String nickname, String email, String password) {// registerNewAcc
-		nicknameInput(nickname);
+	public void registerNewAccount(String nickname, String email, String password) {
+		nicknameType(nickname);
 
-		emailInput(email);
+		emailType(email);
 
-		passwordInput(password); 
+		passwordType(password); 
 
 		LOGGER.info("Trying to check 1-st checkbox");
 		storeDataAgreement.check();
@@ -61,17 +61,17 @@ public class SignUpPage extends AbstractPage {
 		clickSubmit();
 	}
 
-	public void passwordInput(String password) {// change input to type
+	public void passwordType(String password) {
 		LOGGER.info("Enter to password input method");
 		passwordTextField.type(password);
 	}
 
-	public void emailInput(String email) {
+	public void emailType(String email) {
 		LOGGER.info("Enter to email input method");
 		emailInput.type(email);
 	}
 
-	public void nicknameInput(String nickname) {
+	public void nicknameType(String nickname) {
 		LOGGER.info("Enter to nickname input method");
 		nicknameInput.type(nickname);
 		;

@@ -23,6 +23,10 @@ import org.testng.annotations.Test;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
+import com.qaprosoft.carina.core.gui.AbstractPage;
+import com.qaprosoft.carina.demo.gui.components.enums.HeaderMenuButtons;
+import com.qaprosoft.carina.demo.gui.pages.HomePage;
+import com.qaprosoft.carina.demo.utils.HeaderElementFactory;
 
 /**
  * This is Hello World carina-demo tests.
@@ -35,6 +39,12 @@ public class HelloWorld implements IAbstractTest {
     @Test()
     @MethodOwner(owner = "qpsdemo")
     public void helloWorld() {
-        LOGGER.info("Hello World!");
+    	AbstractPage ab = HeaderElementFactory.getPage(getDriver(), HeaderMenuButtons.HOME);
+    	
+    	if (ab instanceof HomePage) {
+    		LOGGER.info("it is HomePage class");
+		} else {
+			LOGGER.info("it is not HomePage class");
+		}
     }
 }

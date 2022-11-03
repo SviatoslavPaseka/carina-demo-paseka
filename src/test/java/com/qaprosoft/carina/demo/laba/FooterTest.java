@@ -70,7 +70,7 @@ public class FooterTest implements IAbstractTest{
 					softAssert.assertTrue(page.isPageOpened
 							(new MerchPage(getDriver())), "Page: " + button.getValue() + " is not opened!");
 					break;
-				case COVARAGE:
+				case COVERAGE:
 					softAssert.assertTrue(page.isPageOpened
 							(new CoveragePage(getDriver())), "Page: " + button.getValue() + " is not opened!");
 					break;

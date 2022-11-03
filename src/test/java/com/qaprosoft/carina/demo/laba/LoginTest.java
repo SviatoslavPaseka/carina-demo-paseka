@@ -65,6 +65,7 @@ public class LoginTest implements IAbstractTest {
 		
 		HomePage homePage = new HomePage(getDriver());
 		homePage.open();
+		LOGGER.info("------" + HomePage.class.getName() + "----------");
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
         
         LoginMenu loginForm = homePage.getHeaderMenu().openLoginForm();
