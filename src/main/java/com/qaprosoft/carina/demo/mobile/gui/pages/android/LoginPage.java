@@ -79,4 +79,32 @@ public class LoginPage extends LoginPageBase implements IMobileUtils {
         return clickLoginBtn();
     }
 
+    @Override
+    public boolean isPageOpened(long timeout) {
+        return loginBtn.isElementPresent();
+    }
+
+    public ExtendedWebElement getNameInputField() {
+        return nameInputField;
+    }
+
+    public ExtendedWebElement getPasswordInputField() {
+        return passwordInputField;
+    }
+
+    public ExtendedWebElement getMaleRadioBtn() {
+        return maleRadioBtn;
+    }
+
+    public ExtendedWebElement getFemaleRadioBtn() {
+        return femaleRadioBtn;
+    }
+
+    public ExtendedWebElement getPrivacyPolicyCheckbox() {
+        return privacyPolicyCheckbox;
+    }
+
+    public ExtendedWebElement getLoginBtn() {
+        return loginBtn;
+    }
 }

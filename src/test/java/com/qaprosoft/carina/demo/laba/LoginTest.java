@@ -1,6 +1,7 @@
 package com.qaprosoft.carina.demo.laba;
 
 import java.lang.invoke.MethodHandles;
+import java.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,7 +63,7 @@ public class LoginTest implements IAbstractTest {
 //		final String nickanameTest = "testNick3";
 	    final String emailTest = "kpitya01@gmail.com";
 	    final String passTest = "768124zzXX#";
-		
+
 		HomePage homePage = new HomePage(getDriver());
 		homePage.open();
 		LOGGER.info("------" + HomePage.class.getName() + "----------");

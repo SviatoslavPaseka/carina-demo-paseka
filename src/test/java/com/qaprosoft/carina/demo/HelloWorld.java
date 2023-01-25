@@ -40,7 +40,6 @@ public class HelloWorld implements IAbstractTest {
     @MethodOwner(owner = "qpsdemo")
     public void helloWorld() {
     	AbstractPage ab = HeaderElementFactory.getPage(getDriver(), HeaderMenuButtons.HOME);
-    	
     	if (ab instanceof HomePage) {
     		LOGGER.info("it is HomePage class");
 		} else {
