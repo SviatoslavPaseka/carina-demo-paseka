@@ -24,4 +24,9 @@ public abstract class LoginPageBase extends AbstractPage {
 
 	public abstract CarinaDescriptionPageBase login();
 
+	public abstract boolean isSpecifiedElementPresent(String nameOfElement);
+
+	public abstract boolean isSpecifiedSelectorChecked(String nameOfSelector);
+
+	public abstract String getTextFromSpecifiedElement(String nameOfElement);
 }

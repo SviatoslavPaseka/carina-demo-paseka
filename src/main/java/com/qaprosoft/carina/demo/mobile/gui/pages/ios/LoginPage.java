@@ -1,5 +1,6 @@
 package com.qaprosoft.carina.demo.mobile.gui.pages.ios;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -83,6 +84,21 @@ public class LoginPage extends LoginPageBase {
 		selectMaleSex();
 		checkPrivacyPolicyCheckbox();
 		return clickLoginBtn();
+	}
+
+	@Override
+	public boolean isSpecifiedElementPresent(String nameOfElement) {
+		throw new NotImplementedException("This hasn't realization");
+	}
+
+	@Override
+	public boolean isSpecifiedSelectorChecked(String nameOfSelector) {
+		throw new NotImplementedException("This hasn't realization");
+	}
+
+	@Override
+	public String getTextFromSpecifiedElement(String nameOfElement) {
+		throw new NotImplementedException("This hasn't realization");
 	}
 
 }

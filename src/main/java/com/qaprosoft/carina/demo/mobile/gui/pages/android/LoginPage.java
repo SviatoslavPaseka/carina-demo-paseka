@@ -14,6 +14,7 @@ import com.qaprosoft.carina.demo.mobile.gui.pages.common.LoginPageBase;
 @DeviceType(pageType = Type.ANDROID_PHONE, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase implements IMobileUtils {
 
+    private static final Integer TIMEOUT = 8000;
     @FindBy(id = "name")
     private ExtendedWebElement nameInputField;
 
@@ -80,31 +81,55 @@ public class LoginPage extends LoginPageBase implements IMobileUtils {
     }
 
     @Override
+    public boolean isSpecifiedElementPresent(String nameOfElement) {
+        switch (nameOfElement){
+            case "nameInputField":
+               return nameInputField.isElementPresent();
+            case "passwordInputField":
+                return passwordInputField.isElementPresent();
+            case "radio_male":
+                return maleRadioBtn.isElementPresent();
+            case "radio_female":
+                return femaleRadioBtn.isElementPresent();
+            case "checkbox":
+                return privacyPolicyCheckbox.isElementPresent();
+            case "login_button":
+                return loginBtn.isElementPresent();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean isSpecifiedSelectorChecked(String nameOfSelector) {
+        switch (nameOfSelector){
+            case "radio_male":
+                return maleRadioBtn.isChecked();
+            case "radio_female":
+                return femaleRadioBtn.isChecked();
+            case "checkbox":
+                return privacyPolicyCheckbox.isChecked();
+        }
+        return false;
+    }
+
+    @Override
+    public String getTextFromSpecifiedElement(String nameOfElement) {
+        switch (nameOfElement){
+            case "nameInputField":
+                return nameInputField.getText();
+            case "passwordInputField":
+                return passwordInputField.getText();
+        }
+        return "";
+    }
+
+    @Override
     public boolean isPageOpened(long timeout) {
         return loginBtn.isElementPresent();
     }
 
-    public ExtendedWebElement getNameInputField() {
-        return nameInputField;
-    }
-
-    public ExtendedWebElement getPasswordInputField() {
-        return passwordInputField;
-    }
-
-    public ExtendedWebElement getMaleRadioBtn() {
-        return maleRadioBtn;
-    }
-
-    public ExtendedWebElement getFemaleRadioBtn() {
-        return femaleRadioBtn;
-    }
-
-    public ExtendedWebElement getPrivacyPolicyCheckbox() {
-        return privacyPolicyCheckbox;
-    }
-
-    public ExtendedWebElement getLoginBtn() {
-        return loginBtn;
+    @Override
+    public boolean isPageOpened() {
+        return this.isPageOpened(TIMEOUT);
     }
 }
