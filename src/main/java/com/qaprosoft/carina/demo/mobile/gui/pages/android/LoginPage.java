@@ -1,5 +1,6 @@
 package com.qaprosoft.carina.demo.mobile.gui.pages.android;
 
+import com.qaprosoft.carina.demo.mobile.gui.pages.common.*;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -8,12 +9,15 @@ import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType.Type;
 import com.qaprosoft.carina.core.foundation.utils.mobile.IMobileUtils;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.demo.mobile.gui.pages.common.CarinaDescriptionPageBase;
-import com.qaprosoft.carina.demo.mobile.gui.pages.common.LoginPageBase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.lang.invoke.MethodHandles;
 
 @DeviceType(pageType = Type.ANDROID_PHONE, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase implements IMobileUtils {
 
+    private  static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private static final Integer TIMEOUT = 8000;
     @FindBy(id = "name")
     private ExtendedWebElement nameInputField;
@@ -49,8 +53,12 @@ public class LoginPage extends LoginPageBase implements IMobileUtils {
     }
 
     @Override
-    public void selectMaleSex() {
-        maleRadioBtn.click();
+    public void selectSex(Sex sex) {
+        if (sex == Sex.MALE){
+            maleRadioBtn.click();
+        }else{
+            femaleRadioBtn.click();
+        }
     }
 
     @Override
@@ -59,9 +67,9 @@ public class LoginPage extends LoginPageBase implements IMobileUtils {
     }
 
     @Override
-    public CarinaDescriptionPageBase clickLoginBtn() {
+    public WebViewPageBase clickLoginBtn() {
         loginBtn.click();
-        return initPage(getDriver(), CarinaDescriptionPageBase.class);
+        return initPage(getDriver(), WebViewPageBase.class);
     }
 
     @Override
@@ -70,57 +78,69 @@ public class LoginPage extends LoginPageBase implements IMobileUtils {
     }
 
     @Override
-    public CarinaDescriptionPageBase login() {
+    public WebViewPageBase login() {
         String username = "Test user";
         String password = RandomStringUtils.randomAlphabetic(10);
         typeName(username);
         typePassword(password);
-        selectMaleSex();
+        selectSex(Sex.MALE);
         checkPrivacyPolicyCheckbox();
         return clickLoginBtn();
     }
 
     @Override
-    public boolean isSpecifiedElementPresent(String nameOfElement) {
-        switch (nameOfElement){
-            case "nameInputField":
-               return nameInputField.isElementPresent();
-            case "passwordInputField":
-                return passwordInputField.isElementPresent();
-            case "radio_male":
-                return maleRadioBtn.isElementPresent();
-            case "radio_female":
-                return femaleRadioBtn.isElementPresent();
-            case "checkbox":
-                return privacyPolicyCheckbox.isElementPresent();
-            case "login_button":
-                return loginBtn.isElementPresent();
+    public  boolean isInputFieldPresent(InputField inputField){
+        if (inputField == InputField.NAME) {
+            return nameInputField.isElementPresent();
+        } else if (inputField == InputField.PASSWORD) {
+            return passwordInputField.isElementPresent();
+        }else {
+            throw new IllegalArgumentException("NO argument of type 'InputField' was passed to the method - 'isInputFieldPresent'");
         }
-        return false;
+    }
+    @Override
+    public boolean isSexRadioButtonPresent(Sex sex){
+        if (sex == Sex.MALE){
+            return maleRadioBtn.isElementPresent();
+        } else if (sex == Sex.FEMALE) {
+            return femaleRadioBtn.isElementPresent();
+        }else{
+            throw new IllegalArgumentException("NO argument of type 'Sex' was passed to the method - 'isSexTooglePresent'");
+        }
     }
 
     @Override
-    public boolean isSpecifiedSelectorChecked(String nameOfSelector) {
-        switch (nameOfSelector){
-            case "radio_male":
-                return maleRadioBtn.isChecked();
-            case "radio_female":
-                return femaleRadioBtn.isChecked();
-            case "checkbox":
-                return privacyPolicyCheckbox.isChecked();
-        }
-        return false;
+    public boolean isPrivacyPolicyCheckboxPresent(){
+        return privacyPolicyCheckbox.isElementPresent();
+    }
+    @Override
+    public boolean isLoginButtonPresent(){
+        return loginBtn.isElementPresent();
     }
 
     @Override
-    public String getTextFromSpecifiedElement(String nameOfElement) {
-        switch (nameOfElement){
-            case "nameInputField":
-                return nameInputField.getText();
-            case "passwordInputField":
-                return passwordInputField.getText();
+    public boolean isSexRadioButtonChecked(Sex sex) {
+        if (sex == Sex.MALE){
+            return maleRadioBtn.isChecked();
+        } else if (sex == Sex.FEMALE) {
+            return femaleRadioBtn.isChecked();
+        }else{
+            throw new IllegalArgumentException("NO argument of type 'Sex' was passed to the method - 'isSexChecked'");
         }
-        return "";
+    }
+    @Override
+    public boolean isPrivacyPolicyCheckboxChecked(){
+        return privacyPolicyCheckbox.isChecked();
+    }
+    @Override
+    public String getTextInputField(InputField inputField) {
+        if (inputField == InputField.NAME) {
+            return nameInputField.getText();
+        } else if (inputField == InputField.PASSWORD) {
+            return passwordInputField.getText();
+        }else {
+            throw new IllegalArgumentException("NO argument of type 'InputField' was passed to the method - 'getTextInputField'");
+        }
     }
 
     @Override
@@ -130,6 +150,6 @@ public class LoginPage extends LoginPageBase implements IMobileUtils {
 
     @Override
     public boolean isPageOpened() {
-        return this.isPageOpened(TIMEOUT);
+        return isPageOpened(TIMEOUT);
     }
 }

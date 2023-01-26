@@ -11,4 +11,5 @@ public abstract class WebViewPageBase extends AbstractPage {
 
     public abstract ContactUsPageBase goToContactUsPage();
 
+    public abstract boolean isOpened();
 }

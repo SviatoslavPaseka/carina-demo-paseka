@@ -9,10 +9,11 @@ import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = WebViewPageBase.class)
 public class WebViewPage extends WebViewPageBase {
-
     @FindBy(xpath = "//*[@class='t708__icon']")
     private ExtendedWebElement contactUsLink;
 
+    @FindBy(id = "toolbar")
+    private ExtendedWebElement toolbar;
     public WebViewPage(WebDriver driver) {
         super(driver);
     }
@@ -21,6 +22,11 @@ public class WebViewPage extends WebViewPageBase {
     public ContactUsPageBase goToContactUsPage() {
         contactUsLink.click();
         return initPage(getDriver(), ContactUsPageBase.class);
+    }
+
+    @Override
+    public boolean isOpened() {
+        return toolbar.isElementPresent();
     }
 
 }

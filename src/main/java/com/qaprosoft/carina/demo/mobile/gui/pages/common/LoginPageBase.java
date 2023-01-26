@@ -14,19 +14,24 @@ public abstract class LoginPageBase extends AbstractPage {
 
 	public abstract void typePassword(String password);
 
-	public abstract void selectMaleSex();
+	public abstract void selectSex(Sex sex);
 
 	public abstract void checkPrivacyPolicyCheckbox();
 
-	public abstract CarinaDescriptionPageBase clickLoginBtn();
+	public abstract WebViewPageBase clickLoginBtn();
 
 	public abstract boolean isLoginBtnActive();
 
-	public abstract CarinaDescriptionPageBase login();
+	public abstract WebViewPageBase login();
 
-	public abstract boolean isSpecifiedElementPresent(String nameOfElement);
+	public abstract boolean isSexRadioButtonChecked(Sex sex);
 
-	public abstract boolean isSpecifiedSelectorChecked(String nameOfSelector);
+	public abstract String getTextInputField(InputField inputField);
+	public abstract boolean isPrivacyPolicyCheckboxPresent();
+	public abstract boolean isLoginButtonPresent();
 
-	public abstract String getTextFromSpecifiedElement(String nameOfElement);
+	public abstract boolean isSexRadioButtonPresent(Sex sex);
+
+	public abstract boolean isInputFieldPresent(InputField inputField);
+	public abstract boolean isPrivacyPolicyCheckboxChecked();
 }

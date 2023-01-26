@@ -1,5 +1,6 @@
 package com.qaprosoft.carina.demo.mobile.gui.pages.ios;
 
+import com.qaprosoft.carina.demo.mobile.gui.pages.common.*;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
@@ -10,8 +11,6 @@ import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType.Type;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.annotations.ClassChain;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.annotations.Predicate;
-import com.qaprosoft.carina.demo.mobile.gui.pages.common.CarinaDescriptionPageBase;
-import com.qaprosoft.carina.demo.mobile.gui.pages.common.LoginPageBase;
 
 @DeviceType(pageType = Type.IOS_PHONE, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase {
@@ -55,7 +54,7 @@ public class LoginPage extends LoginPageBase {
 	}
 
 	@Override
-	public void selectMaleSex() {
+	public void selectSex(Sex sex) {
 		maleRadioBtn.click();
 	}
 
@@ -65,9 +64,9 @@ public class LoginPage extends LoginPageBase {
 	}
 
 	@Override
-	public CarinaDescriptionPageBase clickLoginBtn() {
+	public WebViewPageBase clickLoginBtn() {
 		loginBtn.click();
-		return initPage(getDriver(), CarinaDescriptionPageBase.class);
+		return initPage(getDriver(), WebViewPageBase.class);
 	}
 
 	@Override
@@ -76,29 +75,48 @@ public class LoginPage extends LoginPageBase {
 	}
 
 	@Override
-	public CarinaDescriptionPageBase login(){
+	public WebViewPageBase login(){
 		String username = "Test user";
 		String password = RandomStringUtils.randomAlphabetic(10);
 		typeName(username);
 		typePassword(password);
-		selectMaleSex();
+		selectSex(Sex.MALE);
 		checkPrivacyPolicyCheckbox();
 		return clickLoginBtn();
 	}
 
 	@Override
-	public boolean isSpecifiedElementPresent(String nameOfElement) {
-		throw new NotImplementedException("This hasn't realization");
+	public boolean isSexRadioButtonChecked(Sex sex) {
+		throw new NotImplementedException("This method hasn't realization on IOS");
 	}
 
 	@Override
-	public boolean isSpecifiedSelectorChecked(String nameOfSelector) {
-		throw new NotImplementedException("This hasn't realization");
+	public String getTextInputField(InputField inputField) {
+		throw new NotImplementedException("This method hasn't realization on IOS");
 	}
 
 	@Override
-	public String getTextFromSpecifiedElement(String nameOfElement) {
-		throw new NotImplementedException("This hasn't realization");
+	public boolean isPrivacyPolicyCheckboxPresent() {
+		throw new NotImplementedException("This method hasn't realization on IOS");
 	}
 
+	@Override
+	public boolean isLoginButtonPresent() {
+		throw new NotImplementedException("This method hasn't realization on IOS");
+	}
+
+	@Override
+	public boolean isSexRadioButtonPresent(Sex sex) {
+		throw new NotImplementedException("This method hasn't realization on IOS");
+	}
+
+	@Override
+	public boolean isInputFieldPresent(InputField inputField) {
+		throw new NotImplementedException("This method hasn't realization on IOS");
+	}
+
+	@Override
+	public boolean isPrivacyPolicyCheckboxChecked() {
+		throw new NotImplementedException("This method hasn't realization on IOS");
+	}
 }
