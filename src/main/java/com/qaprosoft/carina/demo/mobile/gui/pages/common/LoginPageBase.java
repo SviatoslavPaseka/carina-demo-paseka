@@ -22,7 +22,7 @@ public abstract class LoginPageBase extends AbstractPage {
 
 	public abstract boolean isLoginBtnActive();
 
-	public abstract WebViewPageBase login();
+	public abstract WebViewPageBase defaultLogin();
 
 	public abstract boolean isSexRadioButtonChecked(Sex sex);
 

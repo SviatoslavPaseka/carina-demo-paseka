@@ -17,16 +17,16 @@ public class VerifyLoginPageTest implements IAbstractTest, IMobileUtils {
         LoginPageBase loginPage = welcomePage.clickNextBtn();
         Assert.assertTrue(loginPage.isPageOpened(), "LoginPage is not opened");
 
-        Assert.assertTrue(loginPage.isInputFieldPresent(InputField.NAME), "[LOGIN] Name input field isn't present on login page after starting an application");
-        Assert.assertTrue(loginPage.isInputFieldPresent(InputField.PASSWORD), "[LOGIN] Password input field isn't present on login page after starting an application");
-        Assert.assertTrue(loginPage.isSexRadioButtonPresent(Sex.MALE), "[LOGIN] Male radio button isn't present on login page after starting an application");
-        Assert.assertTrue(loginPage.isSexRadioButtonPresent(Sex.FEMALE), "[LOGIN] Female radio button isn't present on login page after starting an application");
-        Assert.assertTrue(loginPage.isPrivacyPolicyCheckboxPresent(), "[LOGIN] Privacy policy checkbox isn't present on login page after starting an application");
-        Assert.assertTrue(loginPage.isLoginButtonPresent(), "[LOGIN] Login button isn't present on login page after starting an application");
+        Assert.assertTrue(loginPage.isInputFieldPresent(InputField.NAME), "[LOGIN] Name input field isn't present");
+        Assert.assertTrue(loginPage.isInputFieldPresent(InputField.PASSWORD), "[LOGIN] Password input field isn't present");
+        Assert.assertTrue(loginPage.isSexRadioButtonPresent(Sex.MALE), "[LOGIN] Male radio button isn't present");
+        Assert.assertTrue(loginPage.isSexRadioButtonPresent(Sex.FEMALE), "[LOGIN] Female radio button isn't present");
+        Assert.assertTrue(loginPage.isPrivacyPolicyCheckboxPresent(), "[LOGIN] Privacy policy checkbox isn't present");
+        Assert.assertTrue(loginPage.isLoginButtonPresent(), "[LOGIN] Login button isn't present");
 
-        Assert.assertFalse(loginPage.isSexRadioButtonChecked(Sex.MALE), "[LOGIN] Male radio button is checked on login page any before taping");
-        Assert.assertFalse(loginPage.isSexRadioButtonChecked(Sex.FEMALE), "[LOGIN] Female radio button is checked on login page any before taping");
-        Assert.assertFalse(loginPage.isPrivacyPolicyCheckboxChecked(), "[LOGIN] Privacy policy checkbox is checked on login page any before taping");
+        Assert.assertFalse(loginPage.isSexRadioButtonChecked(Sex.MALE), String.format("[LOGIN] %s radio button is checked by default.", Sex.MALE.getValue()));
+        Assert.assertFalse(loginPage.isSexRadioButtonChecked(Sex.FEMALE), String.format("[LOGIN] %s radio button is checked by default.", Sex.FEMALE.getValue()));
+        Assert.assertFalse(loginPage.isPrivacyPolicyCheckboxChecked(), "[LOGIN] Privacy policy checkbox is checked by default.");
 
         loginPage.typeName("SomeName");
         Assert.assertEquals(loginPage.getTextInputField(InputField.NAME), "SomeName");
@@ -37,12 +37,12 @@ public class VerifyLoginPageTest implements IAbstractTest, IMobileUtils {
         Assert.assertTrue(loginPage.isSexRadioButtonChecked(Sex.MALE), "[LOGIN] Male radio button isn't checked on login page after taping");
 
         loginPage.checkPrivacyPolicyCheckbox();
-        Assert.assertTrue(loginPage.isPrivacyPolicyCheckboxChecked(), "[LOGIN] Privacy policy checkbox isn't checked on login page after taping");
+        Assert.assertTrue(loginPage.isPrivacyPolicyCheckboxChecked(), "[LOGIN] Privacy policy checkbox isn't checked after taping");
 
-        Assert.assertTrue(loginPage.isLoginBtnActive(), "[LOGIN] Login button is not active on Login page after filling all the necessary conditions");
+        Assert.assertTrue(loginPage.isLoginBtnActive(), "[LOGIN] Login button is not active after filling all the necessary conditions");
 
         WebViewPageBase webViewPage = loginPage.clickLoginBtn();
 
-        Assert.assertTrue(webViewPage.isOpened(), "[WEB VIEW] Web view page isn't opened after taping to login button on Login page");
+        Assert.assertTrue(webViewPage.isOpened(), "[WEB VIEW] Web view page isn't opened after taping to login button");
     }
 }

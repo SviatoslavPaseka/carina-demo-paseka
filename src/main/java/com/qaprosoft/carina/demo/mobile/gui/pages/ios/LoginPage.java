@@ -75,7 +75,7 @@ public class LoginPage extends LoginPageBase {
 	}
 
 	@Override
-	public WebViewPageBase login(){
+	public WebViewPageBase defaultLogin(){
 		String username = "Test user";
 		String password = RandomStringUtils.randomAlphabetic(10);
 		typeName(username);

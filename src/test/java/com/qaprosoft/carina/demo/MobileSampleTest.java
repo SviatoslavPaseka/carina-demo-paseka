@@ -55,7 +55,7 @@ public class MobileSampleTest implements IAbstractTest, IMobileUtils {
     public void testWebView() {
         WelcomePageBase welcomePage = initPage(getDriver(), WelcomePageBase.class);
         LoginPageBase loginPage = welcomePage.clickNextBtn();
-        loginPage.login();
+        loginPage.defaultLogin();
         WebViewPageBase webViewPageBase = initPage(getDriver(), WebViewPageBase.class);
         MobileContextUtils contextHelper = new MobileContextUtils();
         contextHelper.switchMobileContext(View.WEB);
