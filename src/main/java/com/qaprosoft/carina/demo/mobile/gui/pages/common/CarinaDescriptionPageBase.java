@@ -13,7 +13,7 @@ public abstract class CarinaDescriptionPageBase extends AbstractPage {
 
     public abstract ChartsPageBase navigateToChartsPage();
 
-    public abstract MapsPageBase navigateToMapPage();
+    public abstract MapPageBase navigateToMapPage();
 
     public abstract UIElementsPageBase navigateToUIElementsPage();
 

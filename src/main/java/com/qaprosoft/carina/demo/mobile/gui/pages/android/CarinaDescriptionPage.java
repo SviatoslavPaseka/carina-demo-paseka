@@ -50,10 +50,10 @@ public class CarinaDescriptionPage extends CarinaDescriptionPageBase {
     }
 
     @Override
-    public MapsPageBase navigateToMapPage() {
+    public MapPageBase navigateToMapPage() {
         leftMenuButton.click();
         mapLink.click();
-        return initPage(getDriver(), MapsPageBase.class);
+        return initPage(getDriver(), MapPageBase.class);
     }
 
     @Override

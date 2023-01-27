@@ -32,7 +32,7 @@ public class CarinaDescriptionPage extends CarinaDescriptionPageBase {
     }
 
     @Override
-    public MapsPageBase navigateToMapPage() {
+    public MapPageBase navigateToMapPage() {
         throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 

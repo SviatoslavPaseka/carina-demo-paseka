@@ -10,6 +10,8 @@ public abstract class WebViewPageBase extends AbstractPage {
     }
 
     public abstract ContactUsPageBase goToContactUsPage();
-
     public abstract boolean isOpened();
+    public abstract void clickToolbarMenuButton();
+
+    public abstract MapPageBase clickMapLink();
 }
