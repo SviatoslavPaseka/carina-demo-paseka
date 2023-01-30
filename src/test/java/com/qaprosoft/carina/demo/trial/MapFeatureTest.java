@@ -22,12 +22,15 @@ public class MapFeatureTest implements IAbstractTest, IMobileUtils {
 
         Assert.assertTrue(navigationMenuPage.isOpened(), "[NAVIGATION MENU] page is not opened");
 
-        MapPageBase mapPage = (MapPageBase) navigationMenuPage.clickMenuBtn(NavMenuBtn.MAP);
+        MapPageBase mapPage = (MapPageBase) navigationMenuPage.clickMenuButton(NavMenuButton.MAP);
         Assert.assertTrue(mapPage.isOpened(), "[MAP] Page is not opened after taping on 'Map link'");
-        Assert.assertTrue(mapPage.isZoomButtonPresent(ZoomBtn.IN), "[MAP] Zoom IN button isn't present");
-        Assert.assertTrue(mapPage.isZoomButtonPresent(ZoomBtn.OUT), "[MAP] Zoom OUT button isn't present");
+        Assert.assertTrue(mapPage.isZoomButtonPresent(ZoomButton.IN), "[MAP] Zoom IN button isn't present");
+        Assert.assertTrue(mapPage.isZoomButtonPresent(ZoomButton.OUT), "[MAP] Zoom OUT button isn't present");
 
-        Assert.assertTrue(mapPage.getZoomBtnYCoordinate(ZoomBtn.IN) < mapPage.getZoomBtnYCoordinate(ZoomBtn.OUT),
-                            "[MAP]Zoom out above a zoom in");
+        //Assert by coordinate
+        Assert.assertTrue(mapPage.getZoomBtnYCoordinate(ZoomButton.IN) < mapPage.getZoomBtnYCoordinate(ZoomButton.OUT),
+                            "[MAP][1] Zoom in NOT above a zoom out");
+        //Assert by DOM (xpath)
+        Assert.assertTrue(mapPage.isZoomInAboveZoomOut(), "[MAP][2] Zoom in NOT above a zoom out");
     }
 }

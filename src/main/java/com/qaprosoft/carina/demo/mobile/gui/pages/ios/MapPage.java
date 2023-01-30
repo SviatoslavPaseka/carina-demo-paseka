@@ -3,7 +3,7 @@ package com.qaprosoft.carina.demo.mobile.gui.pages.ios;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.demo.mobile.gui.pages.common.MapPageBase;
-import com.qaprosoft.carina.demo.mobile.gui.pages.common.ZoomBtn;
+import com.qaprosoft.carina.demo.mobile.gui.pages.common.ZoomButton;
 import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -31,7 +31,7 @@ public class MapPage extends MapPageBase {
     }
 
     @Override
-    public boolean isZoomButtonPresent(ZoomBtn zoomBth) {
+    public boolean isZoomButtonPresent(ZoomButton zoomBth) {
         throw  new NotImplementedException("Isn't realized in IOS");
     }
     @Override
@@ -40,7 +40,12 @@ public class MapPage extends MapPageBase {
     }
 
     @Override
-    public int getZoomBtnYCoordinate(ZoomBtn zoomBtn){
+    public int getZoomBtnYCoordinate(ZoomButton zoomBtn){
         throw  new NotImplementedException("Isn't realized in IOS");
+    }
+
+    @Override
+    public boolean isZoomInAboveZoomOut() {
+        throw new NotImplementedException("Isn't realized on IOS");
     }
 }

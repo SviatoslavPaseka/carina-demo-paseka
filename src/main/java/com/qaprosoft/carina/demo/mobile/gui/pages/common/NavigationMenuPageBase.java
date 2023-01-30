@@ -8,7 +8,7 @@ public abstract class NavigationMenuPageBase extends AbstractPage {
     public NavigationMenuPageBase(WebDriver driver) {
         super(driver);
     }
-    public abstract AbstractPage clickMenuBtn(NavMenuBtn navMenuBtn);
+    public abstract AbstractPage clickMenuButton(NavMenuButton navMenuButton);
 
     public abstract boolean isOpened();
 }

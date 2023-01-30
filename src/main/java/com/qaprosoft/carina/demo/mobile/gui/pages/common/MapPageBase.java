@@ -9,9 +9,11 @@ public abstract class MapPageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract boolean isZoomButtonPresent(ZoomBtn zoomBth);
+    public abstract boolean isZoomButtonPresent(ZoomButton zoomBth);
 
     public abstract boolean isOpened();
 
-    public abstract int getZoomBtnYCoordinate(ZoomBtn zoomBtn);
+    public abstract int getZoomBtnYCoordinate(ZoomButton zoomBtn);
+
+    public abstract boolean isZoomInAboveZoomOut();
 }
