@@ -18,16 +18,16 @@ public class MapFeatureTest implements IAbstractTest, IMobileUtils {
 
         WebViewPageBase webViewPage = loginPage.defaultLogin();
 
-        webViewPage.clickToolbarMenuButton();
+        NavigationMenuPageBase navigationMenuPage = webViewPage.clickToolbarMenuButton();
 
-        //?need to add an assertion to check the clickability of the map link in the toolbar menu?
+        Assert.assertTrue(navigationMenuPage.isOpened(), "[NAVIGATION MENU] page is not opened");
 
-        MapPageBase mapPage = webViewPage.clickMapLink();
+        MapPageBase mapPage = (MapPageBase) navigationMenuPage.clickMenuBtn(NavMenuBtn.MAP);
         Assert.assertTrue(mapPage.isOpened(), "[MAP] Page is not opened after taping on 'Map link'");
         Assert.assertTrue(mapPage.isZoomButtonPresent(ZoomBtn.IN), "[MAP] Zoom IN button isn't present");
         Assert.assertTrue(mapPage.isZoomButtonPresent(ZoomBtn.OUT), "[MAP] Zoom OUT button isn't present");
 
         Assert.assertTrue(mapPage.getZoomBtnYCoordinate(ZoomBtn.IN) < mapPage.getZoomBtnYCoordinate(ZoomBtn.OUT),
-                            "[MAP]Zoom out is not above a zoom in");
+                            "[MAP]Zoom out above a zoom in");
     }
 }

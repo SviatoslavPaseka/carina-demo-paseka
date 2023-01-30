@@ -1,9 +1,10 @@
-package com.qaprosoft.carina.demo.mobile.gui.pages.android;
+package com.qaprosoft.carina.demo.mobile.gui.pages.ios;
 
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.demo.mobile.gui.pages.common.MapPageBase;
 import com.qaprosoft.carina.demo.mobile.gui.pages.common.ZoomBtn;
+import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
@@ -11,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import java.lang.invoke.MethodHandles;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = MapPageBase.class)
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = MapPageBase.class)
 public class MapPage extends MapPageBase {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -31,24 +32,15 @@ public class MapPage extends MapPageBase {
 
     @Override
     public boolean isZoomButtonPresent(ZoomBtn zoomBth) {
-        if (zoomBth == ZoomBtn.IN) {
-            return zoomIn.isElementPresent();
-        } else {
-            return zoomOut.isElementPresent();
-        }
+        throw  new NotImplementedException("Isn't realized in IOS");
     }
     @Override
     public boolean isOpened(){
-        return mapLabel.isElementPresent();
+        throw  new NotImplementedException("Isn't realized in IOS");
     }
 
-    //TODO refactoring to using DOM
     @Override
     public int getZoomBtnYCoordinate(ZoomBtn zoomBtn){
-        if (zoomBtn == ZoomBtn.IN){
-            return zoomIn.getLocation().getY();
-        }else {
-            return zoomOut.getLocation().getY();
-        }
+        throw  new NotImplementedException("Isn't realized in IOS");
     }
 }
