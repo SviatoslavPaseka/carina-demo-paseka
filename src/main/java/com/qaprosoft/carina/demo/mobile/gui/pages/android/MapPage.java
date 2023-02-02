@@ -52,7 +52,6 @@ public class MapPage extends MapPageBase {
     }
     @Override
     public boolean isZoomInAboveZoomOut(){
-        LOGGER.info("Zoom out: " + zoomOut.getAttribute("content-desc"));
         return zoomOut.getAttribute("content-desc").trim().equals("Zoom out");
     }
 }

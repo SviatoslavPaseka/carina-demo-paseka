@@ -16,7 +16,7 @@ public class NavigationMenuPage extends NavigationMenuPageBase {
 
     @FindBy(id = "com.solvd.carinademoapplication:id/navigation_header_container")
     private ExtendedWebElement header;
-    @FindBy(xpath = "//*[@resource-id = 'com.solvd.carinademoapplication:id/design_menu_item_text'][@text = '%s']")
+    @FindBy(xpath = "//*[contains(@resource-id, 'com.solvd.carinademoapplication:id/design_menu_item_text') and contains(@text, '%s')]")
     private ExtendedWebElement menuButton;
 
     @Override

@@ -2,40 +2,13 @@ package com.qaprosoft.carina.demo.mobile.gui.pages.ios;
 
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.utils.mobile.IMobileUtils;
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.demo.mobile.gui.pages.common.UIElementsPageBase;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = UIElementsPageBase.class)
 public class UIElementsPage extends UIElementsPageBase implements IMobileUtils {
+    private static final String THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID = "This method is not yet implemented for iOS";
 
-    @FindBy(id = "editText")
-    private ExtendedWebElement textField;
-
-    @FindBy(id = "editText2")
-    private ExtendedWebElement emailField;
-
-    @FindBy(id = "editText3")
-    private ExtendedWebElement dateField;
-
-    @FindBy(id = "checkBox2")
-    private ExtendedWebElement checkBoxButton;
-
-    @FindBy(id = "radioButton")
-    private ExtendedWebElement maleRadioButton;
-
-    @FindBy(id = "radioButton3")
-    private ExtendedWebElement femaleRadioButton;
-
-    @FindBy(id = "radioButton5")
-    private ExtendedWebElement otherRadioButton;
-
-    @FindBy(id = "radioButton5")
-    private ExtendedWebElement seekBarRadioButton;
-
-    @FindBy(className = "android.widget.ScrollView")
-    private ExtendedWebElement container;
 
     public UIElementsPage(WebDriver driver) {
         super(driver);
@@ -43,71 +16,71 @@ public class UIElementsPage extends UIElementsPageBase implements IMobileUtils {
 
     @Override
     public void typeText(String text) {
-        textField.type(text);
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 
     @Override
     public void typeEmail(String email) {
-        emailField.type(email);
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 
     @Override
     public String getEmail(){
-        return emailField.getText();
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 
     @Override
     public String getText(){
-        return textField.getText();
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 
     @Override
     public String getDate(){
-        return dateField.getText();
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 
     @Override
     public void typeDate(String date) {
-        dateField.type(date);
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 
     @Override
     public void clickOnMaleRadioButton() {
-        maleRadioButton.click();
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 
     @Override
     public void clickOnFemaleRadioButton() {
-        femaleRadioButton.click();
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 
     @Override
     public void clickOnOtherRadioButton() {
-        otherRadioButton.click();
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 
     @Override
     public boolean isFemaleRadioButtonSelected(){
-        return femaleRadioButton.isChecked();
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 
     @Override
     public boolean isOthersRadioButtonSelected(){
-        return otherRadioButton.isChecked();
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 
     @Override
     public void checkCopy() {
-        checkBoxButton.click();
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 
     @Override
     public boolean isCopyChecked(){
-        return checkBoxButton.isChecked();
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 
+    @Override
     public void swipeToFemaleRadioButton() {
-        swipe(femaleRadioButton, container, 10);
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
-
 }

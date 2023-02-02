@@ -1,19 +1,21 @@
 package com.qaprosoft.carina.demo.mobile.gui.pages.ios;
 
-import com.qaprosoft.carina.demo.mobile.gui.pages.common.*;
-import org.apache.commons.lang3.NotImplementedException;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
-
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType.Type;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.annotations.ClassChain;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.annotations.Predicate;
+import com.qaprosoft.carina.demo.mobile.gui.pages.common.InputField;
+import com.qaprosoft.carina.demo.mobile.gui.pages.common.LoginPageBase;
+import com.qaprosoft.carina.demo.mobile.gui.pages.common.Sex;
+import com.qaprosoft.carina.demo.mobile.gui.pages.common.WebViewPageBase;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = Type.IOS_PHONE, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase {
+	private static final String THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID = "This method is not yet implemented for iOS";
 
 	@FindBy(xpath = "type = 'XCUIElementTypeTextField'")
 	@Predicate
@@ -87,36 +89,36 @@ public class LoginPage extends LoginPageBase {
 
 	@Override
 	public boolean isSexRadioButtonChecked(Sex sex) {
-		throw new NotImplementedException("This method hasn't realization on IOS");
+		throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
 	}
 
 	@Override
 	public String getTextInputField(InputField inputField) {
-		throw new NotImplementedException("This method hasn't realization on IOS");
+		throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
 	}
 
 	@Override
 	public boolean isPrivacyPolicyCheckboxPresent() {
-		throw new NotImplementedException("This method hasn't realization on IOS");
+		throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
 	}
 
 	@Override
 	public boolean isLoginButtonPresent() {
-		throw new NotImplementedException("This method hasn't realization on IOS");
+		throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
 	}
 
 	@Override
 	public boolean isSexRadioButtonPresent(Sex sex) {
-		throw new NotImplementedException("This method hasn't realization on IOS");
+		throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
 	}
 
 	@Override
 	public boolean isInputFieldPresent(InputField inputField) {
-		throw new NotImplementedException("This method hasn't realization on IOS");
+		throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
 	}
 
 	@Override
 	public boolean isPrivacyPolicyCheckboxChecked() {
-		throw new NotImplementedException("This method hasn't realization on IOS");
+		throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
 	}
 }

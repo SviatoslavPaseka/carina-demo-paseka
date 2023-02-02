@@ -1,30 +1,13 @@
 package com.qaprosoft.carina.demo.mobile.gui.pages.ios;
 
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.demo.mobile.gui.pages.common.MapPageBase;
 import com.qaprosoft.carina.demo.mobile.gui.pages.common.ZoomButton;
-import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.lang.invoke.MethodHandles;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = MapPageBase.class)
 public class MapPage extends MapPageBase {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-
-    @FindBy(xpath = "//android.widget.TextView[@text = 'Map']")
-    private ExtendedWebElement mapLabel;
-
-    @FindBy(xpath = "//android.widget.ImageView[@content-desc='Zoom in']")
-    private ExtendedWebElement zoomIn;
-
-    @FindBy(xpath = "//android.widget.ImageView[@content-desc='Zoom out']")
-    private ExtendedWebElement zoomOut;
+    private static final String THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID = "This method is not yet implemented for iOS";
 
     public MapPage(WebDriver driver) {
         super(driver);
@@ -32,20 +15,20 @@ public class MapPage extends MapPageBase {
 
     @Override
     public boolean isZoomButtonPresent(ZoomButton zoomBth) {
-        throw  new NotImplementedException("Isn't realized in IOS");
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
     @Override
     public boolean isOpened(){
-        throw  new NotImplementedException("Isn't realized in IOS");
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 
     @Override
     public int getZoomBtnYCoordinate(ZoomButton zoomBtn){
-        throw  new NotImplementedException("Isn't realized in IOS");
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 
     @Override
     public boolean isZoomInAboveZoomOut() {
-        throw new NotImplementedException("Isn't realized on IOS");
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID);
     }
 }
