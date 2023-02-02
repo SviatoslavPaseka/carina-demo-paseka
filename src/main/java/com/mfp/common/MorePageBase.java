@@ -7,4 +7,6 @@ public abstract class MorePageBase extends AbstractPage {
     public MorePageBase(WebDriver driver) {
         super(driver);
     }
+
+    public abstract boolean isOpened();
 }

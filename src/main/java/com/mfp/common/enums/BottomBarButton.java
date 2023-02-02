@@ -3,24 +3,24 @@ package com.mfp.common.enums;
 import com.mfp.common.*;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 
-public enum MenuButton {
+public enum BottomBarButton {
     DASHBOARD("dashboard", DashboardPageBase.class), DIARY("diary", DiaryPageBase.class),
     NEWSFEED("newsfeed", NewsfeedPageBase.class), PLANS("plans", PlansPageBase.class),
     MORE("more", MorePageBase.class);
 
     private String value;
-    private Class<? extends AbstractPage> pages;
+    private Class<? extends AbstractPage> pageClass;
 
-    MenuButton(String value, Class<? extends AbstractPage> pages) {
+    BottomBarButton(String value, Class<? extends AbstractPage> pageClass) {
         this.value = value;
-        this.pages = pages;
+        this.pageClass = pageClass;
     }
 
     public String getValue() {
         return value;
     }
 
-    public Class<? extends AbstractPage> getPages() {
-        return pages;
+    public Class<? extends AbstractPage> getPageClass() {
+        return pageClass;
     }
 }

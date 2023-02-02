@@ -1,10 +1,8 @@
 package com.mfp.android;
 
 import com.mfp.common.DashboardPageBase;
-import com.mfp.common.componentsBase.BottomNavigationMenuBase;
-import com.mfp.common.enums.MenuButton;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
-import com.qaprosoft.carina.core.gui.AbstractPage;
+import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
@@ -14,11 +12,15 @@ public class DashboardPage extends DashboardPageBase {
     public DashboardPage(WebDriver driver) {
         super(driver);
     }
+    @FindBy(xpath = "//android.view.View[@content-desc='User avatar']")
+    private ExtendedWebElement userAvatar;
 
-    @FindBy(id = "com.myfitnesspal.android:id/bottomNavigationBar")
-    private BottomNavigationMenuBase bottomNavigationMenu;
+    @FindBy(id = "com.myfitnesspal.android:id/progressPleaseWait")
+    private ExtendedWebElement waitingSpinner;
     @Override
-    public AbstractPage openPageInMenu (MenuButton menuButton){
-        return bottomNavigationMenu.clickMenuIcon(menuButton);
+    public boolean isOpened() {
+        return userAvatar.isElementPresent()
+                && !waitingSpinner.isElementPresent();
     }
+
 }

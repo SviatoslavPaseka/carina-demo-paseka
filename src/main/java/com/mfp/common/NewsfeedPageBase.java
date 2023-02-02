@@ -7,4 +7,6 @@ public abstract class NewsfeedPageBase extends AbstractPage {
     public NewsfeedPageBase(WebDriver driver) {
         super(driver);
     }
+
+    public abstract boolean isOpened();
 }

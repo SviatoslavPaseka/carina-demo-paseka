@@ -7,4 +7,6 @@ public abstract class PlansPageBase extends AbstractPage {
     public PlansPageBase(WebDriver driver) {
         super(driver);
     }
+
+    public abstract boolean isOpened();
 }

@@ -1,6 +1,5 @@
 package com.mfp.common;
 
-import com.mfp.common.enums.MenuButton;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
@@ -9,5 +8,5 @@ public abstract class DiaryPageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract AbstractPage openPageInMenu (MenuButton menuButton);
+    public abstract boolean isOpened();
 }

@@ -10,7 +10,11 @@ public abstract class MFPLogInPageBase extends AbstractPage {
 
     public abstract void typeEmail(String email);
     public abstract void typePassword(String password);
-    public abstract void clickLoginButton();
+    public abstract UserTutorialPageBase clickLoginButton();
 
     public abstract UserTutorialPageBase defaultLogin();
+
+    public abstract UserTutorialPageBase login(String email, String password);
+
+    public abstract boolean isOpened();
 }

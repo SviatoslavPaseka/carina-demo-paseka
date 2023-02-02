@@ -9,5 +9,7 @@ public abstract class UserTutorialPageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract void clickCloseButton();
+    public abstract DashboardPageBase clickCloseButton();
+
+    public abstract boolean isOpened();
 }

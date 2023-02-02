@@ -1,21 +1,24 @@
 package com.mfp.android;
 
 import com.mfp.common.DiaryPageBase;
-import com.mfp.common.componentsBase.BottomNavigationMenuBase;
-import com.mfp.common.enums.MenuButton;
-import com.qaprosoft.carina.core.gui.AbstractPage;
+import com.mfp.common.PlansPageBase;
+import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
+import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = DiaryPageBase.class)
 public class DiaryPage extends DiaryPageBase {
 
     public DiaryPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(id = "com.myfitnesspal.android:id/bottomNavigationBar")
-    private BottomNavigationMenuBase bottomNavigationMenu;
+    @FindBy(xpath = "//androidx.appcompat.widget.LinearLayoutCompat" +
+            "//preceding-sibling::android.widget.TextView")
+    private ExtendedWebElement title;
+
     @Override
-    public AbstractPage openPageInMenu (MenuButton menuButton){
-        return bottomNavigationMenu.clickMenuIcon(menuButton);
+    public boolean isOpened(){
+        return title.isElementPresent();
     }
 }
