@@ -7,6 +7,7 @@ import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.utils.factory.ICustomTypePageFactory;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
@@ -16,9 +17,14 @@ public class BottomNavigationBar extends BottomNavigationBarBase implements ICus
     @FindBy(id = "com.myfitnesspal.android:id/action_%s")
     private ExtendedWebElement menuIcon;
 
+    @FindBy(xpath = "//*[@resource-id='com.myfitnesspal.android:id/bottomNavigationBar']/child::*")
+    private ExtendedWebElement container;
 
     public BottomNavigationBar(WebDriver driver) {
         super(driver);
+    }
+    public BottomNavigationBar(WebDriver driver, SearchContext searchContext) {
+        super(driver, searchContext);
     }
 
     @Override
@@ -28,7 +34,7 @@ public class BottomNavigationBar extends BottomNavigationBarBase implements ICus
     }
 
     @Override
-    public boolean isPresent (){
-        return menuIcon.format(BottomBarButton.DASHBOARD.getValue()).isElementPresent();
+    public boolean isBottomNavBarPresent (){
+        return container.isPresent();
     }
 }

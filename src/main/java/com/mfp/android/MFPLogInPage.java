@@ -1,9 +1,7 @@
 package com.mfp.android;
 
 import com.mfp.common.MFPLogInPageBase;
-import com.mfp.common.MFPWelcomePageBase;
 import com.mfp.common.UserTutorialPageBase;
-import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
@@ -49,27 +47,14 @@ public class MFPLogInPage extends MFPLogInPageBase {
     }
 
     @Override
-    public UserTutorialPageBase defaultLogin(){
-        return login(R.TESTDATA.get("credentials.mfp.email"),
-                    R.TESTDATA.get("credentials.mfp.password"));
-    }
-
-    @Override
-    public UserTutorialPageBase login(String email, String password){
-        MFPWelcomePageBase welcomePage = initPage(getDriver(), MFPWelcomePageBase.class);
-        welcomePage.assertPageOpened();
-        MFPLogInPageBase logInPage = welcomePage.clickLoginButton();
-        logInPage.assertPageOpened();
-
-        typeEmail(email);
-        typePassword(password);
-        return logInPage.clickLoginButton();
-    }
-
-    @Override
     public boolean isOpened(){
         return emailAdressField.isElementPresent()
                 && passwordField.isElementPresent()
                 && loginButton.isElementPresent();
+    }
+
+    @Override
+    public boolean isLoginButtonEnabled(){
+        return loginButton.isClickable();
     }
 }

@@ -9,4 +9,6 @@ public abstract class MFPWelcomePageBase extends AbstractPage {
     }
 
     public abstract MFPLogInPageBase clickLoginButton();
+
+    public abstract boolean isOpened();
 }

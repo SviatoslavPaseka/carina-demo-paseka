@@ -19,36 +19,23 @@ public class BottomMenuItemTest implements IAbstractTest, IMobileUtils {
     @MethodOwner(owner = "spaseka", platform = "android")
     @TestRailCases(testCasesId = "3")
     public void checkingBottomMenuItemsLeadsEachItemPage(){
-        MFPLogInPageBase logInPage = initPage(getDriver(), MFPLogInPageBase.class);
-        UserTutorialPageBase userTutorialPage = logInPage.defaultLogin();
 
-        //in my opinion here i need to create waitPage with waiting spinner,
-        // and after filling password and email and taping login button
-        //test go to waitPage and wait for end of logining
-        //and if login is successful - test going to userTutorialPage...
-
-        Assert.assertTrue(userTutorialPage.isOpened());
         MFPCommonPageBase mfpCommonPage = initPage(getDriver(), MFPCommonPageBase.class);
 
-        DashboardPageBase dashboardPage = userTutorialPage.clickCloseButton();
-        Assert.assertTrue(dashboardPage.isOpened(), "[DASHBOARD] is not opened");
-        Assert.assertTrue(mfpCommonPage.isBottomNavigationBarPresent(), "bar is not present");
+        DashboardPageBase dashboardPage = mfpCommonPage.defaultLogin();
+        Assert.assertTrue(dashboardPage.isOpened(), "[DASHBOARD PAGE] is not opened after logining");
 
-        DiaryPageBase diaryPage = (DiaryPageBase) mfpCommonPage.clickMenuIcon(BottomBarButton.DIARY);
-        Assert.assertTrue(diaryPage.isOpened(), "[diaryPage] is not opened");
-        Assert.assertTrue(mfpCommonPage.isBottomNavigationBarPresent(), "bar is not present");
+        DiaryPageBase diaryPage = (DiaryPageBase) mfpCommonPage.getBottomNavigationBar().clickMenuIcon(BottomBarButton.DIARY);
+        Assert.assertTrue(diaryPage.isOpened(), "[DIARY PAGE] is not opened after taping on Diary button on bottom navigation bar");
 
-        NewsfeedPageBase newsfeedPage = (NewsfeedPageBase) mfpCommonPage.clickMenuIcon(BottomBarButton.NEWSFEED);
-        Assert.assertTrue(newsfeedPage.isOpened(), "[newsfeedPage] is not opened");
-        Assert.assertTrue(mfpCommonPage.isBottomNavigationBarPresent(), "bar is not present");
+        NewsfeedPageBase newsfeedPage = (NewsfeedPageBase) mfpCommonPage.getBottomNavigationBar().clickMenuIcon(BottomBarButton.NEWSFEED);
+        Assert.assertTrue(newsfeedPage.isOpened(), "[NEWSFEED PAGE] is not opened after taping on NEWSFEED button on bottom navigation bar");
 
-        PlansPageBase plansPage = (PlansPageBase) mfpCommonPage.clickMenuIcon(BottomBarButton.PLANS);
-        Assert.assertTrue(plansPage.isOpened(), "[plansPage] is not opened");
-        Assert.assertTrue(mfpCommonPage.isBottomNavigationBarPresent(), "bar is not present");
+        PlansPageBase plansPage = (PlansPageBase) mfpCommonPage.getBottomNavigationBar().clickMenuIcon(BottomBarButton.PLANS);
+        Assert.assertTrue(plansPage.isOpened(), "[PLANS PAGE] is not opened after taping on PLANS button on bottom navigation bar");
 
-        MorePageBase morePage = (MorePageBase) mfpCommonPage.clickMenuIcon(BottomBarButton.MORE);
-        Assert.assertTrue(morePage.isOpened(), "[morePage] is not opened");
-        Assert.assertTrue(mfpCommonPage.isBottomNavigationBarPresent(), "bar is not present");
+        MorePageBase morePage = (MorePageBase) mfpCommonPage.getBottomNavigationBar().clickMenuIcon(BottomBarButton.MORE);
+        Assert.assertTrue(morePage.isOpened(), "[MORE PAGE] is not opened after taping on MORE button on bottom navigation bar");
 
         LOGGER.info("End");
     }

@@ -1,6 +1,8 @@
 package com.mfp.android;
 
 import com.mfp.common.DiaryPageBase;
+import com.mfp.common.IConstants;
+import com.mfp.common.MFPCommonPageBase;
 import com.mfp.common.NewsfeedPageBase;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
@@ -12,12 +14,14 @@ public class NewsfeedPage extends NewsfeedPageBase {
     public NewsfeedPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(xpath = "//android.view.ViewGroup[@resource-id='com.myfitnesspal.android:id/toolbar']" +
-            "/android.widget.TextView")
+    @FindBy(xpath = "//*[@resource-id='com.myfitnesspal.android:id/toolbar']" +
+            "/child::*[contains(@text, '%s')]")
     private ExtendedWebElement title;
 
     @Override
     public boolean isOpened(){
-        return title.isElementPresent();
+        return title.format(IConstants.NEWSFEED).isElementPresent()
+                && initPage(getDriver(), MFPCommonPageBase.class)
+                .getBottomNavigationBar().isBottomNavBarPresent();
     }
 }

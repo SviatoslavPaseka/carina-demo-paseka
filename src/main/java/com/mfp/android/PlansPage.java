@@ -1,5 +1,7 @@
 package com.mfp.android;
 
+import com.mfp.common.IConstants;
+import com.mfp.common.MFPCommonPageBase;
 import com.mfp.common.MorePageBase;
 import com.mfp.common.PlansPageBase;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
@@ -13,12 +15,14 @@ public class PlansPage extends PlansPageBase {
     public PlansPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(xpath = "//android.view.ViewGroup[@resource-id='com.myfitnesspal.android:id/toolbar']" +
-            "/android.widget.TextView")
+    @FindBy(xpath = "//*[@resource-id='com.myfitnesspal.android:id/toolbar']" +
+            "/child::*[contains(@text, '%s')]")
     private ExtendedWebElement title;
 
     @Override
     public boolean isOpened(){
-        return title.isElementPresent();
+        return title.format(IConstants.PLANS).isElementPresent()
+                && initPage(getDriver(), MFPCommonPageBase.class)
+                .getBottomNavigationBar().isBottomNavBarPresent();
     }
 }

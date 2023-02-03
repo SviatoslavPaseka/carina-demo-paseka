@@ -26,4 +26,10 @@ public class MFPWelcomePage extends MFPWelcomePageBase{
         loginButton.click();
         return initPage(getDriver(), MFPLogInPageBase.class);
     }
+
+    @Override
+    public boolean isOpened() {
+        return loginButton.isElementPresent()
+                && signupButton.isElementPresent();
+    }
 }

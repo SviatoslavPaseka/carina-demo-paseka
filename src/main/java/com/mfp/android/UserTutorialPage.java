@@ -1,6 +1,7 @@
 package com.mfp.android;
 
 import com.mfp.common.DashboardPageBase;
+import com.mfp.common.MFPCommonPageBase;
 import com.mfp.common.UserTutorialPageBase;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
@@ -25,6 +26,8 @@ public class UserTutorialPage extends UserTutorialPageBase {
 
     @Override
     public boolean isOpened(){
-        return closeButton.isElementPresent();
+        return closeButton.isElementPresent()
+                && initPage(getDriver(), MFPCommonPageBase.class)
+                .getBottomNavigationBar().isBottomNavBarPresent();
     }
 }

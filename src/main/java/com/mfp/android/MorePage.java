@@ -1,6 +1,7 @@
 package com.mfp.android;
 
 import com.mfp.common.DashboardPageBase;
+import com.mfp.common.MFPCommonPageBase;
 import com.mfp.common.MorePageBase;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
@@ -17,6 +18,8 @@ public class MorePage extends MorePageBase {
     private ExtendedWebElement profileImage;
     @Override
     public boolean isOpened(){
-        return profileImage.isElementPresent();
+        return profileImage.isElementPresent()
+                && initPage(getDriver(), MFPCommonPageBase.class)
+                .getBottomNavigationBar().isBottomNavBarPresent();
     }
 }
