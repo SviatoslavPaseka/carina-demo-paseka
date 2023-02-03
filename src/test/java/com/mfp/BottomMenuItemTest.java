@@ -17,7 +17,7 @@ public class BottomMenuItemTest implements IAbstractTest, IMobileUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     @Test()
     @MethodOwner(owner = "spaseka", platform = "android")
-    @TestRailCases(testCasesId = "3")
+    @TestRailCases(testCasesId = "1")
     public void checkingBottomMenuItemsLeadsEachItemPage(){
 
         MFPCommonPageBase mfpCommonPage = initPage(getDriver(), MFPCommonPageBase.class);

@@ -3,6 +3,7 @@ package com.mfp.android;
 import com.mfp.android.components.BottomNavigationBar;
 import com.mfp.common.*;
 import com.mfp.common.componentsBase.BottomNavigationBarBase;
+import com.mfp.common.constants.IConstants;
 import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
@@ -40,7 +41,7 @@ public class MFPCommonPage extends MFPCommonPageBase {
         logInPage.typeEmail(email);
         logInPage.typePassword(password);
         Assert.assertTrue(logInPage.isLoginButtonEnabled(), "[LOGIN PAGE] login button is not enabled after filling email and password");
-        waitUntil(ExpectedConditions.invisibilityOf(spinner.getElement()), 20);
+        waitUntil(ExpectedConditions.invisibilityOf(spinner.getElement()), IConstants.TWENTY_SECONDS);
         UserTutorialPageBase userTutorialPage = logInPage.clickLoginButton();
         return userTutorialPage.clickCloseButton();
     }

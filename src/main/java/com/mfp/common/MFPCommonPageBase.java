@@ -1,7 +1,6 @@
 package com.mfp.common;
 
 import com.mfp.common.componentsBase.BottomNavigationBarBase;
-import com.mfp.common.enums.BottomBarButton;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 

@@ -1,8 +1,7 @@
 package com.mfp.android;
 
-import com.mfp.common.IConstants;
+import com.mfp.common.constants.IConstants;
 import com.mfp.common.MFPCommonPageBase;
-import com.mfp.common.MorePageBase;
 import com.mfp.common.PlansPageBase;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;

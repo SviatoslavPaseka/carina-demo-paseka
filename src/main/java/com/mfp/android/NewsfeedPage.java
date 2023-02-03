@@ -1,7 +1,6 @@
 package com.mfp.android;
 
-import com.mfp.common.DiaryPageBase;
-import com.mfp.common.IConstants;
+import com.mfp.common.constants.IConstants;
 import com.mfp.common.MFPCommonPageBase;
 import com.mfp.common.NewsfeedPageBase;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
