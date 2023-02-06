@@ -3,6 +3,7 @@ package com.mfp.android;
 import com.mfp.common.DeleteModalWindowPageBase;
 import com.mfp.common.DiaryPageBase;
 import com.mfp.common.MFPCommonPageBase;
+import com.mfp.common.QuickAddPageBase;
 import com.mfp.common.constants.IConstants;
 import com.mfp.common.enums.BottomBarButton;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
@@ -37,12 +38,16 @@ public class DiaryPage extends DiaryPageBase {
     @FindBy(xpath = "//android.widget.Button[@content-desc='Delete']")
     private ExtendedWebElement deleteButton;
 
+    @FindBy(xpath = "(//android.widget.Button[@resource-id='com.myfitnesspal.android:id/more'])[1]")
+    private ExtendedWebElement moreButtonInBreakFast;
 
+    @FindBy(xpath = "//android.widget.TextView[@text='Quick Add']/..")
+    private ExtendedWebElement quickAddButton;
 
     @Override
     public boolean isOpened(){
         return title.format(BottomBarButton.DIARY.getValueInId()).isElementPresent()
-                && initPage(getDriver(), MFPCommonPageBase.class)
+                && !initPage(getDriver(), MFPCommonPageBase.class)
                 .getBottomNavigationBar().isBottomNavBarClickable(BottomBarButton.DIARY);
     }
 
@@ -80,5 +85,26 @@ public class DiaryPage extends DiaryPageBase {
         deleteButton.click();
 
         initPage(getDriver(), DeleteModalWindowPageBase.class).accessDelete();
+    }
+
+    @Override
+    public boolean isBreakfastMoreButtonPresent() {
+        return moreButtonInBreakFast.isElementPresent();
+    }
+
+    @Override
+    public boolean isQuickAddButtonPresent() {
+        return quickAddButton.isElementPresent();
+    }
+
+    @Override
+    public void clickBreakfastMoreButton() {
+        moreButtonInBreakFast.click();
+    }
+
+    @Override
+    public QuickAddPageBase clickQuickAddButton() {
+        quickAddButton.click();
+        return initPage(getDriver(), QuickAddPageBase.class);
     }
 }

@@ -16,4 +16,12 @@ public abstract class DiaryPageBase extends AbstractPage {
     public abstract Integer getRemainingCaloriesInteger();
 
     public abstract void clearUserDiary();
+
+    public abstract boolean isBreakfastMoreButtonPresent();
+
+    public abstract boolean isQuickAddButtonPresent();
+
+    public abstract void clickBreakfastMoreButton();
+
+    public abstract QuickAddPageBase clickQuickAddButton();
 }

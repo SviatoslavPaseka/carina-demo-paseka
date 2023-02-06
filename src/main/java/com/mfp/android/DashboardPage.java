@@ -20,7 +20,7 @@ public class DashboardPage extends DashboardPageBase {
     @Override
     public boolean isOpened() {
         return userAvatar.isElementPresent()
-                && initPage(getDriver(), MFPCommonPageBase.class)
+                && !initPage(getDriver(), MFPCommonPageBase.class)
                     .getBottomNavigationBar().isBottomNavBarClickable(BottomBarButton.DASHBOARD);
     }
 
