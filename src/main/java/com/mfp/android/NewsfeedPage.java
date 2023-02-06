@@ -21,7 +21,7 @@ public class NewsfeedPage extends NewsfeedPageBase {
     @Override
     public boolean isOpened(){
         return title.format(BottomBarButton.NEWSFEED.getValueInId()).isElementPresent()
-                && initPage(getDriver(), MFPCommonPageBase.class)
-                .getBottomNavigationBar().isBottomNavBarPresent();
+                && !initPage(getDriver(), MFPCommonPageBase.class)
+                .getBottomNavigationBar().isBottomNavBarClickable(BottomBarButton.NEWSFEED);
     }
 }

@@ -37,4 +37,9 @@ public class BottomNavigationBar extends BottomNavigationBarBase implements ICus
     public boolean isBottomNavBarPresent (){
         return container.isPresent();
     }
+
+    @Override
+    public Boolean isBottomNavBarClickable(BottomBarButton bottomBarButton){
+        return Boolean.parseBoolean(menuIcon.format(bottomBarButton.getValue()).getAttribute("clickable"));
+    }
 }

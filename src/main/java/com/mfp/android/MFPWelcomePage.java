@@ -29,7 +29,7 @@ public class MFPWelcomePage extends MFPWelcomePageBase{
 
     @Override
     public boolean isOpened() {
-        return loginButton.isElementPresent()
-                && signupButton.isElementPresent();
+        return loginButton.isElementPresent(100)
+                && signupButton.isElementPresent(100);
     }
 }

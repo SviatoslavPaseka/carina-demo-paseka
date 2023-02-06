@@ -19,4 +19,6 @@ public abstract class BottomNavigationBarBase extends AbstractUIObject {
     public abstract AbstractPage clickMenuIcon (BottomBarButton barButton);
 
     public abstract boolean isBottomNavBarPresent();
+
+    public abstract Boolean isBottomNavBarClickable(BottomBarButton bottomBarButton);
 }

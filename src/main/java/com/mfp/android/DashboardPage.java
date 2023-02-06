@@ -2,6 +2,7 @@ package com.mfp.android;
 
 import com.mfp.common.DashboardPageBase;
 import com.mfp.common.MFPCommonPageBase;
+import com.mfp.common.enums.BottomBarButton;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
@@ -20,7 +21,7 @@ public class DashboardPage extends DashboardPageBase {
     public boolean isOpened() {
         return userAvatar.isElementPresent()
                 && initPage(getDriver(), MFPCommonPageBase.class)
-                    .getBottomNavigationBar().isBottomNavBarPresent();
+                    .getBottomNavigationBar().isBottomNavBarClickable(BottomBarButton.DASHBOARD);
     }
 
 }

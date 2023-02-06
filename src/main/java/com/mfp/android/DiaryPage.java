@@ -43,7 +43,7 @@ public class DiaryPage extends DiaryPageBase {
     public boolean isOpened(){
         return title.format(BottomBarButton.DIARY.getValueInId()).isElementPresent()
                 && initPage(getDriver(), MFPCommonPageBase.class)
-                .getBottomNavigationBar().isBottomNavBarPresent();
+                .getBottomNavigationBar().isBottomNavBarClickable(BottomBarButton.DIARY);
     }
 
 

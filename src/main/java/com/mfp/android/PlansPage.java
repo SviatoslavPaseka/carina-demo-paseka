@@ -22,7 +22,7 @@ public class PlansPage extends PlansPageBase {
     @Override
     public boolean isOpened(){
         return title.format(BottomBarButton.PLANS.getValueInId()).isElementPresent()
-                && initPage(getDriver(), MFPCommonPageBase.class)
-                .getBottomNavigationBar().isBottomNavBarPresent();
+                && !initPage(getDriver(), MFPCommonPageBase.class)
+                .getBottomNavigationBar().isBottomNavBarClickable(BottomBarButton.PLANS);
     }
 }

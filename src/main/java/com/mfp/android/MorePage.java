@@ -18,8 +18,6 @@ public class MorePage extends MorePageBase {
     private ExtendedWebElement profileImage;
     @Override
     public boolean isOpened(){
-        return profileImage.isElementPresent()
-                && initPage(getDriver(), MFPCommonPageBase.class)
-                .getBottomNavigationBar().isBottomNavBarPresent();
+        return profileImage.isElementPresent();
     }
 }
