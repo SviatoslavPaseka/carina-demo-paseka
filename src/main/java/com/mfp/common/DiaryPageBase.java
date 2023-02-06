@@ -11,15 +11,9 @@ public abstract class DiaryPageBase extends AbstractPage {
 
     public abstract boolean isOpened();
 
-    public abstract String getAmountCaloriesInMeal(NameOfMealDiary mealDiary);
-
-    public abstract boolean isAllMealHasZEROCalories();
-
-    public abstract String getGoalCaloriesText();
-
-    public abstract String getRemainingCaloriesText();
-
     public abstract Integer getGoalCaloriesInteger();
 
     public abstract Integer getRemainingCaloriesInteger();
+
+    public abstract void clearUserDiary();
 }

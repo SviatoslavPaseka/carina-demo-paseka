@@ -8,7 +8,6 @@ import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.report.testrail.TestRailCases;
 import com.qaprosoft.carina.core.foundation.utils.mobile.IMobileUtils;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
-import org.apache.commons.lang3.StringUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -26,7 +25,7 @@ public class DiaryCaloriesValueTest implements IAbstractTest, IMobileUtils {
         DiaryPageBase diaryPage = (DiaryPageBase) mfpCommonPage.getBottomNavigationBar().clickMenuIcon(BottomBarButton.DIARY);
         Assert.assertTrue(diaryPage.isOpened(), "[DIARY PAGE] is not opened after taping on Diary button on bottom navigation bar");
 
-        Assert.assertTrue(diaryPage.isAllMealHasZEROCalories(), "[DIARY PAGE] some of meal has calories which is different from 0");
+        diaryPage.clearUserDiary();
 
         Integer goalCalories = diaryPage.getGoalCaloriesInteger();
         Integer remainingCalories = diaryPage.getRemainingCaloriesInteger();

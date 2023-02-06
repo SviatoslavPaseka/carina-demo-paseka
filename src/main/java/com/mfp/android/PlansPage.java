@@ -3,6 +3,7 @@ package com.mfp.android;
 import com.mfp.common.constants.IConstants;
 import com.mfp.common.MFPCommonPageBase;
 import com.mfp.common.PlansPageBase;
+import com.mfp.common.enums.BottomBarButton;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
@@ -20,7 +21,7 @@ public class PlansPage extends PlansPageBase {
 
     @Override
     public boolean isOpened(){
-        return title.format(IConstants.PLANS).isElementPresent()
+        return title.format(BottomBarButton.PLANS.getValueInId()).isElementPresent()
                 && initPage(getDriver(), MFPCommonPageBase.class)
                 .getBottomNavigationBar().isBottomNavBarPresent();
     }

@@ -3,6 +3,7 @@ package com.mfp.android;
 import com.mfp.common.constants.IConstants;
 import com.mfp.common.MFPCommonPageBase;
 import com.mfp.common.NewsfeedPageBase;
+import com.mfp.common.enums.BottomBarButton;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +20,7 @@ public class NewsfeedPage extends NewsfeedPageBase {
 
     @Override
     public boolean isOpened(){
-        return title.format(IConstants.NEWSFEED).isElementPresent()
+        return title.format(BottomBarButton.NEWSFEED.getValueInId()).isElementPresent()
                 && initPage(getDriver(), MFPCommonPageBase.class)
                 .getBottomNavigationBar().isBottomNavBarPresent();
     }
