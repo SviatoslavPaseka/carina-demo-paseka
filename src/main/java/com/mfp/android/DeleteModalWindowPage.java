@@ -1,6 +1,7 @@
 package com.mfp.android;
 
 import com.mfp.common.DeleteModalWindowPageBase;
+import com.mfp.common.DiaryPageBase;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +17,8 @@ public class DeleteModalWindowPage extends DeleteModalWindowPageBase {
     private ExtendedWebElement deleteButton;
 
     @Override
-    public void accessDelete(){
+    public DiaryPageBase accessDelete(){
         deleteButton.click();
+        return initPage(getDriver(), DiaryPageBase.class);
     }
 }

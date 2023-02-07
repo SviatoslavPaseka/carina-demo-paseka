@@ -1,8 +1,8 @@
 package com.mfp.common.enums;
 
 public enum NameOfMealDiary {
-    BREAKFAST("breakfast"), LUNCH("lunch"), DINNER("dinner"),
-    SNACKS("snacks"), EXERCISE("exercise"), WATER("water");
+    BREAKFAST("Breakfast"), LUNCH("Lunch"), DINNER("Dinner"),
+    SNACKS("Snacks");
 
     private String value;
 

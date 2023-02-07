@@ -9,5 +9,5 @@ public abstract class DeleteModalWindowPageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract void accessDelete();
+    public abstract DiaryPageBase accessDelete();
 }

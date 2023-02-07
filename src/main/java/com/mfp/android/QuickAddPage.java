@@ -1,7 +1,7 @@
 package com.mfp.android;
 
-import com.mfp.common.DashboardPageBase;
 import com.mfp.common.QuickAddPageBase;
+import com.mfp.common.enums.NutrientsQuickAdd;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
@@ -16,31 +16,15 @@ public class QuickAddPage extends QuickAddPageBase {
     @FindBy(id = "com.myfitnesspal.android:id/tvQuickCalories")
     private ExtendedWebElement calories;
 
-    @FindBy(id = "com.myfitnesspal.android:id/tvQuickFat")
-    private ExtendedWebElement fatField;
-
-    @FindBy(id = "com.myfitnesspal.android:id/tvQuickCarbs")
-    private ExtendedWebElement carbohydratesField;
-
-    @FindBy(id = "com.myfitnesspal.android:id/tvQuickProtein")
-    private ExtendedWebElement proteinField;
+    @FindBy(id = "com.myfitnesspal.android:id/tvQuick" + "%s")
+    private ExtendedWebElement nutrientField;
 
     @FindBy(xpath = "//android.widget.Button[@content-desc='NO THANKS']")
     private ExtendedWebElement failureTrackingTime;
 
     @Override
-    public void typeFat(int value) {
-        fatField.type(String.valueOf(value));
-    }
-
-    @Override
-    public void typeCarbohydrates(int value) {
-        carbohydratesField.type(String.valueOf(value));
-    }
-
-    @Override
-    public void typeProtein(int value) {
-        proteinField.type(String.valueOf(value));
+    public void typeNutrient(int value, NutrientsQuickAdd nutrientsQuickAdd) {
+        nutrientField.format(nutrientsQuickAdd.getNameInDOMId()).type(String.valueOf(value));
     }
 
     @Override
@@ -53,7 +37,6 @@ public class QuickAddPage extends QuickAddPageBase {
         failureTrackingTime.click();
 
         return calories.isElementPresent()
-                && fatField.isElementPresent()
-                && proteinField.isElementPresent();
+                && nutrientField.format(NutrientsQuickAdd.FAT.getNameInDOMId()).isElementPresent();
     }
 }

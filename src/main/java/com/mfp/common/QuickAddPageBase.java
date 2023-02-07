@@ -1,5 +1,6 @@
 package com.mfp.common;
 
+import com.mfp.common.enums.NutrientsQuickAdd;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
@@ -8,11 +9,8 @@ public abstract class QuickAddPageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract void typeFat(int value);
 
-    public abstract void typeCarbohydrates(int value);
-
-    public abstract void typeProtein(int value);
+    public abstract void typeNutrient(int value, NutrientsQuickAdd nutrientsQuickAdd);
 
     public abstract int getCaloriesInteger();
 

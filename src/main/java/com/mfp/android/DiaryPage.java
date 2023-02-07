@@ -1,20 +1,24 @@
 package com.mfp.android;
 
-import com.mfp.common.DeleteModalWindowPageBase;
-import com.mfp.common.DiaryPageBase;
-import com.mfp.common.MFPCommonPageBase;
-import com.mfp.common.QuickAddPageBase;
+import com.mfp.common.*;
 import com.mfp.common.constants.IConstants;
 import com.mfp.common.enums.BottomBarButton;
+import com.mfp.common.enums.NameOfMealDiary;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+
+import java.lang.invoke.MethodHandles;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = DiaryPageBase.class)
 public class DiaryPage extends DiaryPageBase {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     public DiaryPage(WebDriver driver) {
         super(driver);
@@ -38,11 +42,8 @@ public class DiaryPage extends DiaryPageBase {
     @FindBy(xpath = "//android.widget.Button[@content-desc='Delete']")
     private ExtendedWebElement deleteButton;
 
-    @FindBy(xpath = "(//android.widget.Button[@resource-id='com.myfitnesspal.android:id/more'])[1]")
-    private ExtendedWebElement moreButtonInBreakFast;
-
-    @FindBy(xpath = "//android.widget.TextView[@text='Quick Add']/..")
-    private ExtendedWebElement quickAddButton;
+    @FindBy(xpath = "(//*[@text = '%s']/parent::*/parent::*/following-sibling::*[1]/descendant::*/*[@resource-id = 'com.myfitnesspal.android:id/more']")
+    private ExtendedWebElement moreButtonByName;
 
     @Override
     public boolean isOpened(){
@@ -64,15 +65,15 @@ public class DiaryPage extends DiaryPageBase {
 
     /*
     * This method clears all entries in the user's diary.
-    * BUT if user's diary is already clear (also exercise and water),
-    * the method will not clear anything,
-    * because there will be no edit diary button on the page
+    * BUT if user's diary is already clear,
+    * the method will not clear anything
      */
     @Override
-    public void clearUserDiary(){
+    public DiaryPageBase clearUserDiary(){
 
         if (editActionButton.isElementNotPresent(IConstants.FIVE_SECONDS)){
-            return;
+            LOGGER.info("Method didn't clear anything, because diary is already clear");
+            return initPage(getDriver(), DiaryPageBase.class);
         }
 
         Assert.assertTrue(editActionButton.isElementPresent(), "[DIARY PAGE] edit diary button is not present");
@@ -84,27 +85,17 @@ public class DiaryPage extends DiaryPageBase {
         Assert.assertTrue(deleteButton.isElementPresent(), "[DIARY PAGE] delete button is not present on edition mode after taping on edit diary button");
         deleteButton.click();
 
-        initPage(getDriver(), DeleteModalWindowPageBase.class).accessDelete();
+        return initPage(getDriver(), DeleteModalWindowPageBase.class).accessDelete();
     }
 
     @Override
-    public boolean isBreakfastMoreButtonPresent() {
-        return moreButtonInBreakFast.isElementPresent();
+    public boolean isMoreButtonByNamePresent(NameOfMealDiary nameOfMealDiary) {
+        return moreButtonByName.format(nameOfMealDiary.getValue()).isElementPresent();
     }
 
     @Override
-    public boolean isQuickAddButtonPresent() {
-        return quickAddButton.isElementPresent();
-    }
-
-    @Override
-    public void clickBreakfastMoreButton() {
-        moreButtonInBreakFast.click();
-    }
-
-    @Override
-    public QuickAddPageBase clickQuickAddButton() {
-        quickAddButton.click();
-        return initPage(getDriver(), QuickAddPageBase.class);
+    public MoreMenuPageBase clickMoreButtonByName(NameOfMealDiary nameOfMealDiary) {
+        moreButtonByName.format(nameOfMealDiary.getValue()).click();
+        return initPage(getDriver(), MoreMenuPageBase.class);
     }
 }
