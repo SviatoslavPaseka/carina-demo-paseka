@@ -42,7 +42,7 @@ public class DiaryPage extends DiaryPageBase {
     @FindBy(xpath = "//android.widget.Button[@content-desc='Delete']")
     private ExtendedWebElement deleteButton;
 
-    @FindBy(xpath = "(//*[@text = '%s']/parent::*/parent::*/following-sibling::*[1]/descendant::*/*[@resource-id = 'com.myfitnesspal.android:id/more']")
+    @FindBy(xpath = "//*[@text = '%s']/parent::*/parent::*/following-sibling::*[1]/descendant::*/*[@resource-id = 'com.myfitnesspal.android:id/more']")
     private ExtendedWebElement moreButtonByName;
 
     @Override
@@ -85,7 +85,7 @@ public class DiaryPage extends DiaryPageBase {
         Assert.assertTrue(deleteButton.isElementPresent(), "[DIARY PAGE] delete button is not present on edition mode after taping on edit diary button");
         deleteButton.click();
 
-        return initPage(getDriver(), DeleteModalWindowPageBase.class).accessDelete();
+        return initPage(getDriver(), DeleteModalWindowPageBase.class).clickDeleteButton();
     }
 
     @Override
@@ -95,6 +95,7 @@ public class DiaryPage extends DiaryPageBase {
 
     @Override
     public MoreMenuPageBase clickMoreButtonByName(NameOfMealDiary nameOfMealDiary) {
+        Assert.assertTrue(isMoreButtonByNamePresent(nameOfMealDiary), "[DIARY] MoreButton is not present after taping on "+ nameOfMealDiary.getValue() + " more");
         moreButtonByName.format(nameOfMealDiary.getValue()).click();
         return initPage(getDriver(), MoreMenuPageBase.class);
     }

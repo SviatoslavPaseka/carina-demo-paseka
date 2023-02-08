@@ -5,18 +5,18 @@ public enum NutrientsQuickAdd {
     PROTEIN("protein", "Protein");
 
     private String value;
-    private String nameInDOMId;
+    private String nutrientId;
 
     NutrientsQuickAdd(String value, String nameInDOMId) {
         this.value = value;
-        this.nameInDOMId = nameInDOMId;
+        this.nutrientId = nameInDOMId;
     }
 
     public String getValue() {
         return value;
     }
 
-    public String getNameInDOMId() {
-        return nameInDOMId;
+    public String getNutrientId() {
+        return nutrientId;
     }
 }

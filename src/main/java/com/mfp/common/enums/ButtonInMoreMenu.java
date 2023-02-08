@@ -1,24 +1,25 @@
 package com.mfp.common.enums;
 
 import com.mfp.common.QuickAddPageBase;
+import com.mfp.common.RemaindersPageBase;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 
 public enum ButtonInMoreMenu {
     QUICK_ADD("quick_add", "Quick Add", QuickAddPageBase.class),
-    REMINDERS("reminders", "Reminders", null);
+    REMINDERS("reminders", "Reminders", RemaindersPageBase.class);
 
-    private String value;
+    private String buttonId;
     private String nameOfButton;
     private Class<? extends AbstractPage> pageClass;
 
     ButtonInMoreMenu(String value, String nameOfButton, Class<? extends AbstractPage> pageClass) {
-        this.value = value;
+        this.buttonId = value;
         this.nameOfButton = nameOfButton;
         this.pageClass = pageClass;
     }
 
-    public String getValue() {
-        return value;
+    public String getButtonId() {
+        return buttonId;
     }
 
     public String getNameOfButton() {

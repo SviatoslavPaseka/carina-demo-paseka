@@ -17,7 +17,7 @@ public class DeleteModalWindowPage extends DeleteModalWindowPageBase {
     private ExtendedWebElement deleteButton;
 
     @Override
-    public DiaryPageBase accessDelete(){
+    public DiaryPageBase clickDeleteButton(){
         deleteButton.click();
         return initPage(getDriver(), DiaryPageBase.class);
     }

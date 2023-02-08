@@ -28,7 +28,7 @@ public class CaloriesValidationTest implements IAbstractTest, IMobileUtils {
 
         Assert.assertTrue(diaryPage.isMoreButtonByNamePresent(NameOfMealDiary.BREAKFAST), "[Diary Page] Breakfast More Button is not present");
         MoreMenuPageBase moreMenu = diaryPage.clickMoreButtonByName(NameOfMealDiary.BREAKFAST);
-        Assert.assertTrue(moreMenu.isOpened(), "[MORE MENU] is not opened");
+        Assert.assertTrue(moreMenu.isOpened(), String.format("[MORE MENU] is not opened after clicking %s More Menu button", NameOfMealDiary.BREAKFAST.getValue()));
         Assert.assertTrue(moreMenu.isButtonPresent(ButtonInMoreMenu.QUICK_ADD), "[MORE MENU] Quick Add Button is not present after taping more button");
         QuickAddPageBase quickAddPage = (QuickAddPageBase) moreMenu.clickOnButton(ButtonInMoreMenu.QUICK_ADD);
         Assert.assertTrue(quickAddPage.isOpened(), "[Quick Add Page] is not opened after taping quick add button");
@@ -36,8 +36,8 @@ public class CaloriesValidationTest implements IAbstractTest, IMobileUtils {
         quickAddPage.typeNutrient(1, NutrientsQuickAdd.FAT);
         quickAddPage.typeNutrient(1, NutrientsQuickAdd.CARBS);
         quickAddPage.typeNutrient(1, NutrientsQuickAdd.PROTEIN);
-
-        Assert.assertEquals(quickAddPage.getCaloriesInteger(), 17, "[Quick Add Page] Calories value is not equals 17 after typing values: " +
+        hideKeyboard();
+        Assert.assertEquals(quickAddPage.getCalories(), 17, "[Quick Add Page] Calories value is not equals 17 after typing values: " +
                 "1 to fat field, 1 to carbohydrates field, 1 to protein field");
     }
 }

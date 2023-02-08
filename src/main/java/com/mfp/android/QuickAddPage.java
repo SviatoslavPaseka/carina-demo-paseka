@@ -23,12 +23,12 @@ public class QuickAddPage extends QuickAddPageBase {
     private ExtendedWebElement failureTrackingTime;
 
     @Override
-    public void typeNutrient(int value, NutrientsQuickAdd nutrientsQuickAdd) {
-        nutrientField.format(nutrientsQuickAdd.getNameInDOMId()).type(String.valueOf(value));
+    public void typeNutrient(int value, NutrientsQuickAdd nutrient) {
+        nutrientField.format(nutrient.getNutrientId()).type(String.valueOf(value));
     }
 
     @Override
-    public int getCaloriesInteger() {
+    public int getCalories() {
         return Integer.parseInt(calories.getText());
     }
 
@@ -37,6 +37,6 @@ public class QuickAddPage extends QuickAddPageBase {
         failureTrackingTime.click();
 
         return calories.isElementPresent()
-                && nutrientField.format(NutrientsQuickAdd.FAT.getNameInDOMId()).isElementPresent();
+                && nutrientField.format(NutrientsQuickAdd.FAT.getNutrientId()).isElementPresent();
     }
 }

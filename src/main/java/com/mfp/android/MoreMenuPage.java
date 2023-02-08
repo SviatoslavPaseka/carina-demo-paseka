@@ -33,7 +33,6 @@ public class MoreMenuPage extends MoreMenuPageBase {
 
     @Override
     public boolean isButtonPresent(ButtonInMoreMenu ButtonsInMoreMenu){
-        LOGGER.info("LOCATOR: " + button.format(ButtonsInMoreMenu.getNameOfButton()).getNameWithLocator());
         return button.format(ButtonsInMoreMenu.getNameOfButton()).isElementPresent();
     }
 

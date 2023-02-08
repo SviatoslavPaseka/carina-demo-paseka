@@ -10,9 +10,9 @@ public abstract class QuickAddPageBase extends AbstractPage {
     }
 
 
-    public abstract void typeNutrient(int value, NutrientsQuickAdd nutrientsQuickAdd);
+    public abstract void typeNutrient(int value, NutrientsQuickAdd nutrient);
 
-    public abstract int getCaloriesInteger();
+    public abstract int getCalories();
 
     public abstract boolean isOpened();
 }
