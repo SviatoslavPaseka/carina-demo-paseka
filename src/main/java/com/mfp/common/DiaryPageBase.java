@@ -20,4 +20,8 @@ public abstract class DiaryPageBase extends AbstractPage {
     public abstract boolean isMoreButtonByNamePresent(NameOfMealDiary nameOfMealDiary);
 
     public abstract MoreMenuPageBase clickMoreButtonByName(NameOfMealDiary nameOfMealDiary);
+
+    public abstract boolean isMoreOptionsForDashboardPresent();
+
+    public abstract CustomDashboardPageBase clickMoreOptionsForDashboard();
 }

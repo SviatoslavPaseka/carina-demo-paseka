@@ -45,6 +45,9 @@ public class DiaryPage extends DiaryPageBase {
     @FindBy(xpath = "//*[@text = '%s']/parent::*/parent::*/following-sibling::*[1]/descendant::*/*[@resource-id = 'com.myfitnesspal.android:id/more']")
     private ExtendedWebElement moreButtonByName;
 
+    @FindBy(xpath = "//*[contains(@text, 'Nutrients Remaining')]/following-sibling::*")
+    private ExtendedWebElement moreOptionsForDashboard;
+
     @Override
     public boolean isOpened(){
         return title.format(BottomBarButton.DIARY.getValueInId()).isElementPresent()
@@ -98,5 +101,16 @@ public class DiaryPage extends DiaryPageBase {
         Assert.assertTrue(isMoreButtonByNamePresent(nameOfMealDiary), "[DIARY] MoreButton is not present after taping on "+ nameOfMealDiary.getValue() + " more");
         moreButtonByName.format(nameOfMealDiary.getValue()).click();
         return initPage(getDriver(), MoreMenuPageBase.class);
+    }
+
+    @Override
+    public boolean isMoreOptionsForDashboardPresent(){
+        return moreOptionsForDashboard.isElementPresent();
+    }
+
+    @Override
+    public CustomDashboardPageBase clickMoreOptionsForDashboard(){
+        moreOptionsForDashboard.click();
+        return initPage(getDriver(), CustomDashboardPageBase.class);
     }
 }
