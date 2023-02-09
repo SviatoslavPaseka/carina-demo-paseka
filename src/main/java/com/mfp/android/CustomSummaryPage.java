@@ -9,9 +9,15 @@ import com.qaprosoft.carina.core.foundation.utils.mobile.IMobileUtils;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.lang.invoke.MethodHandles;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = CustomSummaryPageBase.class)
 public class CustomSummaryPage extends CustomSummaryPageBase implements IMobileUtils{
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     public CustomSummaryPage(WebDriver driver) {
         super(driver);
     }
@@ -37,8 +43,10 @@ public class CustomSummaryPage extends CustomSummaryPageBase implements IMobileU
     public void checkNutrientCheckbox(NutrientsCustomSummary nutrientCustomSummary, CheckingCheckbox checkingCheckbox){
         swipe(nutrientCheckbox.format(nutrientCustomSummary.getButtonId()), Direction.VERTICAL, 2, 1000);
         if (checkingCheckbox == CheckingCheckbox.CHECK){
+            LOGGER.info("Checkbox with name: " + nutrientCustomSummary.name().toLowerCase() + " is checked");
             nutrientCheckbox.format(nutrientCustomSummary.getButtonId()).check();
         }else {
+            LOGGER.info("Checkbox with name: " + nutrientCustomSummary.name().toLowerCase() + " is unchecked");
             nutrientCheckbox.format(nutrientCustomSummary.getButtonId()).uncheck();
         }
     }
@@ -61,6 +69,7 @@ public class CustomSummaryPage extends CustomSummaryPageBase implements IMobileU
 
     @Override
     public String getTextFromSelectedInfo(){
+        swipe(selectedInfo, Direction.DOWN, 2, 1000);
         return selectedInfo.getText().trim();
     }
 }
