@@ -3,12 +3,13 @@ package com.mfp.android;
 import com.mfp.common.QuickAddPageBase;
 import com.mfp.common.enums.NutrientsQuickAdd;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
+import com.qaprosoft.carina.core.foundation.utils.mobile.IMobileUtils;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = QuickAddPageBase.class)
-public class QuickAddPage extends QuickAddPageBase {
+public class QuickAddPage extends QuickAddPageBase implements IMobileUtils{
     public QuickAddPage(WebDriver driver) {
         super(driver);
     }
@@ -25,6 +26,7 @@ public class QuickAddPage extends QuickAddPageBase {
     @Override
     public void typeNutrient(int value, NutrientsQuickAdd nutrient) {
         nutrientField.format(nutrient.getNutrientId()).type(String.valueOf(value));
+        hideKeyboard();
     }
 
     @Override

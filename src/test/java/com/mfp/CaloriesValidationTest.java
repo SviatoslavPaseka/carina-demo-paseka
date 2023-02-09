@@ -36,7 +36,7 @@ public class CaloriesValidationTest implements IAbstractTest, IMobileUtils {
         quickAddPage.typeNutrient(1, NutrientsQuickAdd.FAT);
         quickAddPage.typeNutrient(1, NutrientsQuickAdd.CARBS);
         quickAddPage.typeNutrient(1, NutrientsQuickAdd.PROTEIN);
-        hideKeyboard();
+
         Assert.assertEquals(quickAddPage.getCalories(), 17, "[Quick Add Page] Calories value is not equals 17 after typing values: " +
                 "1 to fat field, 1 to carbohydrates field, 1 to protein field");
     }

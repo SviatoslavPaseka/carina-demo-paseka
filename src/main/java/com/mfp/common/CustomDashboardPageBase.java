@@ -9,9 +9,9 @@ public abstract class CustomDashboardPageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract boolean isButtonTypeOfDashboardPresent(CustomDashboardButtons customDashboardButtons);
+    public abstract boolean isOptionOfDashboardPresent(CustomDashboardButtons customDashboardButtons);
 
-    public abstract AbstractPage clickOnButtonTypeOfDashboardByName(CustomDashboardButtons customDashboardButton);
+    public abstract AbstractPage clickOnOptionOfDashboardByName(CustomDashboardButtons customDashboardButton);
 
     public abstract boolean isOpened();
 }

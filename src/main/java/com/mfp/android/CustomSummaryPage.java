@@ -2,6 +2,7 @@ package com.mfp.android;
 
 import com.mfp.common.CustomSummaryPageBase;
 import com.mfp.common.DiaryPageBase;
+import com.mfp.common.enums.CheckingCheckbox;
 import com.mfp.common.enums.NutrientsCustomSummary;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.utils.mobile.IMobileUtils;
@@ -23,22 +24,43 @@ public class CustomSummaryPage extends CustomSummaryPageBase implements IMobileU
 
     @FindBy(xpath = "//*[contains(@text, 'Custom Summary')]")
     private ExtendedWebElement title;
+
+    @FindBy(id = "com.myfitnesspal.android:id/tvNutrientSelected")
+    private ExtendedWebElement selectedInfo;
     @Override
     public boolean isNutrientCheckboxChecked(NutrientsCustomSummary nutrientCustomSummary){
-        swipe(nutrientCheckbox.format(nutrientCustomSummary.getButtonId()));
+        swipe(nutrientCheckbox.format(nutrientCustomSummary.getButtonId()), Direction.VERTICAL, 2, 1000);
         return nutrientCheckbox.format(nutrientCustomSummary.getButtonId()).isChecked();
     }
 
     @Override
-    public DiaryPageBase clickAcceptButton(){
+    public void checkNutrientCheckbox(NutrientsCustomSummary nutrientCustomSummary, CheckingCheckbox checkingCheckbox){
+        swipe(nutrientCheckbox.format(nutrientCustomSummary.getButtonId()), Direction.VERTICAL, 2, 1000);
+        if (checkingCheckbox == CheckingCheckbox.CHECK){
+            nutrientCheckbox.format(nutrientCustomSummary.getButtonId()).check();
+        }else {
+            nutrientCheckbox.format(nutrientCustomSummary.getButtonId()).uncheck();
+        }
+    }
 
+    @Override
+    public DiaryPageBase clickAcceptButton(){
         acceptButton.click();
         return initPage(getDriver(), DiaryPageBase.class);
     }
 
     @Override
+    public boolean isAcceptButtonEnabled(){
+        return Boolean.parseBoolean(acceptButton.getAttribute("enabled"));
+    }
+    @Override
     public boolean isOpened(){
         return title.isElementPresent()
                 && acceptButton.isElementPresent();
+    }
+
+    @Override
+    public String getTextFromSelectedInfo(){
+        return selectedInfo.getText().trim();
     }
 }

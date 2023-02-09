@@ -16,18 +16,18 @@ public class CustomDashboardPage extends CustomDashboardPageBase {
     }
 
     @FindBy(id = "com.myfitnesspal.android:id/%s")
-    private ExtendedWebElement buttonTypeOfDashboard;
+    private ExtendedWebElement optionOfDashboard;
 
     @FindBy(xpath = "//*[contains(@text, 'Custom Dashboard')]")
     private ExtendedWebElement title;
     @Override
-    public boolean isButtonTypeOfDashboardPresent(CustomDashboardButtons customDashboardButtons){
-        return buttonTypeOfDashboard.format(customDashboardButtons.getButtonId()).isElementPresent();
+    public boolean isOptionOfDashboardPresent(CustomDashboardButtons customDashboardButtons){
+        return optionOfDashboard.format(customDashboardButtons.getButtonId()).isElementPresent();
     }
 
     @Override
-    public AbstractPage clickOnButtonTypeOfDashboardByName(CustomDashboardButtons customDashboardButton){
-       buttonTypeOfDashboard.format(customDashboardButton.getButtonId()).click();
+    public AbstractPage clickOnOptionOfDashboardByName(CustomDashboardButtons customDashboardButton){
+       optionOfDashboard.format(customDashboardButton.getButtonId()).click();
 
        return initPage(getDriver(), customDashboardButton.getPageClass());
     }
