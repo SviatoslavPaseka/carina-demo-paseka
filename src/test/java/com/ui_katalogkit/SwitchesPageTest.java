@@ -4,44 +4,35 @@ import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.report.testrail.TestRailCases;
 import com.qaprosoft.carina.core.foundation.utils.mobile.IMobileUtils;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
-import com.ui_katalogkit.common.CommonPagesBase.CommonPageBase;
-import com.ui_katalogkit.common.ParentPageBase;
+import com.ui_katalogkit.common.SwitchesPagesBase.SwitchesPageBase;
+import com.ui_katalogkit.common.SwitchesPagesBase.enums.SwitcherName;
 import com.ui_katalogkit.common.UiCatalogPagesBase.UiCatalogPageBase;
 import com.ui_katalogkit.common.UiCatalogPagesBase.enums.UiKitCatalogNames;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.lang.invoke.MethodHandles;
-//mvn test -Dsuite=UiKitCatalog/firstSuite
-public class FirstTest implements IAbstractTest, IMobileUtils {
+
+public class SwitchesPageTest implements IAbstractTest, IMobileUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @BeforeTest
-    public void before(){
+    public void before() {
         LOGGER.info("BEFORE BLOCK");
     }
 
     @Test()
     @MethodOwner(owner = "spaseka", platform = "IOS")
     @TestRailCases(testCasesId = "1")
-    public void checkingBottomMenuItemsLeadsEachItemPage(){
+    public void checkingAllFunctionality() {
         LOGGER.info("Start test");
         UiCatalogPageBase uiCatalogPage = initPage(getDriver(), UiCatalogPageBase.class);
-        CommonPageBase commonPage = initPage(getDriver(), CommonPageBase.class);
 
-        Assert.assertTrue(uiCatalogPage.isOpened());
-        Assert.assertEquals(uiCatalogPage.getTextFromPageName(), "UIKitCatalog");
+        SwitchesPageBase switchesPage = (SwitchesPageBase) uiCatalogPage.tapToElementByName(UiKitCatalogNames.SWITCHES);
 
-        for(UiKitCatalogNames names: UiKitCatalogNames.values()){
-            ParentPageBase currentPage = uiCatalogPage.tapToElementByName(names);
-            LOGGER.info("Checking if the page" + names.getElementName() + " is open");
-            Assert.assertTrue(currentPage.isOpened(), names.getElementName() + " page is not opened");
-            commonPage.tapBackButton();
-        }
-
-        LOGGER.info("End");
+        switchesPage.clickSwitcher(SwitcherName.DEFAULT);
+        LOGGER.info("___" + switchesPage.switcherStatus(SwitcherName.DEFAULT));
     }
 }

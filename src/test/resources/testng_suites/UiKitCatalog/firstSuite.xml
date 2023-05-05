@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="UiKitCatalog first test" verbose="1">
+    <test name="Checking all elements of catalog">
+        <classes>
+            <class name="com.ui_katalogkit.FirstTest"></class>
+            <class name="com.ui_katalogkit.AlertViewsTest"></class>
+        </classes>
+    </test>
+</suite>
