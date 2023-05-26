@@ -9,14 +9,4 @@
 			</class>
 		</classes>
 	</test>
-	
-<!--	<test name="Few login test">-->
-<!--		<classes>-->
-<!--			<class name="com.qaprosoft.carina.demo.laba.LoginTest">-->
-<!--				<methods>-->
-<!--					<include name="loginTest"/>-->
-<!--				</methods>-->
-<!--			</class>-->
-<!--		</classes>-->
-<!--	</test>-->
 </suite>
